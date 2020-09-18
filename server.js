@@ -1,4 +1,4 @@
-/* External mudules */
+// Ec
 const express = require('express')
 const app = express()
 const controllers = require('./controllers')
