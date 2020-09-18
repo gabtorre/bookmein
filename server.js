@@ -1,12 +1,11 @@
-// Ec
+/* External mudules */
 const express = require('express')
 const app = express()
 const controllers = require('./controllers')
 const PORT = 4000;
 
 
-app.use('/compnay',controllers.company)
-app.use('/user', controllers.user)
+app.use('/appointment',controllers)
 
 
 
