@@ -17,6 +17,6 @@ const companySchema = new mongoose.Schema(
 );
 
 // creates a model
-const Company = mongoose.model("Company", employeeSchema);
+const Company = mongoose.model("Company", companySchema);
 
 module.exports = Company;

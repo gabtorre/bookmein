@@ -5,7 +5,8 @@ const controllers = require('./controllers')
 const PORT = 4000;
 
 
-app.use('/appointment',controllers)
+app.use('/compnay',controllers.company)
+app.use('/user', controllers.user)
 
 
 
