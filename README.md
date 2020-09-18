@@ -1,10 +1,10 @@
 # Project 1
-#### Gabriel &amp; Binay
+### Gabriel &amp; Binay
 
-######MVP Pitch
+## MVP Pitch
 Project 1 is an online booking software that allows users to book appointments with this company. The company can add their availble times and users can book a slot. 
 
-###### User Stories
+## User Stories
 * Company provides a service.
 * Company is available for appointments.
 * Company is able to create time slots for the week.
@@ -18,27 +18,28 @@ Project 1 is an online booking software that allows users to book appointments w
 * User cannot cancel their appointment.
 * User is able to see their bookings.
 
-######Milestones
-Saturday - Booking MVC  
-Sunday - Company MVC
-Monday - User MVC / Relationships
-Tuesday - Relationships / Front End
-Wednesday - Front End / MVP
-Thursday - Debugging / Stretch Goals
-Friday - Wrap Up / Present
+## Milestones
 
-######Wire frames
+* Saturday - Booking MVC  
+* Sunday - Company MVC
+* Monday-User MVC / Relationships
+* Tuesday - Relationships / Front End
+* Wednesday - Front End / MVP
+* Thursday - Debugging / Stretch Goals
+* Friday - Wrap Up / Present
+
+## Wire frames
 ![FLowChart](public//images/flow.png)
 ![HomePage](public//images/home.png)
 ![BookPage](public//images/book.png)
 
-######ERD
+## ERD
 ![ERD](public//images/erd.png)
 
 
-######Stretch Goals
+##  Stretch Goals
 
-Add calendar to select bookings.
-User can cancel booking and time slot will be available again.
-Login page for users.
-User Reviews.
+* Add calendar to select bookings.
+* User can cancel booking and time slot will be available again.
+* Login page for users.
+* User Reviews.
