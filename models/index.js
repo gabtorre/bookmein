@@ -1,7 +1,7 @@
 // MODELS AND DATABASE CONNECTION
 
 const mongoose = require('mongoose');
-const connectionString = 'mongodb://localhost:27017/fruits-db';
+const connectionString = 'mongodb://localhost:27017/main-db';
 
 
 mongoose.connect(connectionString,
@@ -26,5 +26,7 @@ mongoose.connection.on('error', () => {
 });
 
 module.exports = {
-    Model: require('./Model.js')
+    Company: require('./Company'),
+    User: require('./User')
+
 }
