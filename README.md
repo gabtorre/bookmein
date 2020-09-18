@@ -20,9 +20,9 @@ Project 1 is an online booking software that allows users to book appointments w
 
 ## Milestones
 
-* Saturday - Booking MVC  
+* Saturday - User MVC
 * Sunday - Company MVC
-* Monday-User MVC / Relationships
+* Monday - Booking MVC / Relationships
 * Tuesday - Relationships / Front End
 * Wednesday - Front End / MVP
 * Thursday - Debugging / Stretch Goals
@@ -39,7 +39,7 @@ Project 1 is an online booking software that allows users to book appointments w
 
 ##  Stretch Goals
 
+* Login page for users.
 * Add calendar to select bookings.
 * User can cancel booking and time slot will be available again.
-* Login page for users.
 * User Reviews.
