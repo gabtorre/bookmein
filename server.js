@@ -1,14 +1,34 @@
-/* External mudules */
-const express = require('express')
-const app = express()
+// External Modules
+const express = require('express');
+const methodOverride = require("method-override");
+
+// Interal Modules
 const controllers = require('./controllers')
-const PORT = 4000;
 
+// Instanced Modules
+const app = express();
 
-app.use('/appointment',controllers)
+// Configuration
+const PORT = 3000;
 
+// Middleware
+app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride("_method"));
 
+// ROUTES
 
-// listener
-app.listen(PORT, `App is running on port ${PORT}`)
+// View Route
+app.get('/', (req, res) => {
+    res.send('Hello')
+})
+
+// Company Route
+app.use('/company', controllers.company);
+
+// User Route
+app.use('/user', controllers.user);
+
+// Server Listener
+app.listen(PORT, () => console.log(`App is running on port ${PORT}`))
+
 

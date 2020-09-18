@@ -1,48 +1,48 @@
-const express = requre('express');
-const router = expressRouter();
+const express = require('express');
+const router = express.Router();
 
 const db = require('../models');
 
 
 // Index Route
 router.get('/', (req, res) => {
-    res.render("User Index")
+    res.send("User Index")
 });
 
 
 // New Route
 router.get('/new', (req, res) => {
-    res.render('User New')
+    res.send('User New')
 });
 
 
 // Create Route
 router.post('/', (req, res) => {
-    res.render('Post User')
+    res.send('Post User')
 });
 
 
 // Show Route
-router.get('/:id', (res, render) => {
-    res.render('User Index')
+router.get('/:id', (req, res) => {
+    res.send('User Index')
 });
 
 
 // Edit Route
-router.get('/:id/edit', (res, render) => {
-    res.render('Edit User')
+router.get('/:id/edit', (req, res) => {
+    res.send('Edit User')
 });
 
 
 // Update Route
 router.put('/:id', (req, res) => {
-    res.render('Update User')
+    res.send('Update User')
 });
 
 
 // Delete Route
 router.delete('/:id', (req, res) => {
-    res.render('User Delete')
+    res.send('User Delete')
 });
 
 module.exports = router;

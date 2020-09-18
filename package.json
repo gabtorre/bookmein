@@ -18,6 +18,7 @@
   "homepage": "https://github.com/gabtorre/project-1#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "method-override": "^3.0.0",
     "mongoose": "^5.10.5"
   }
 }
