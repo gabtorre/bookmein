@@ -11,13 +11,17 @@
 
     </header>
     <article>
-        <h4><%=company.name %></h4>
-        <p><%= comapany.address %></p>
-        <p><strong>Email: </strong><%= comapany.email %></p>
-        <p><strong>Phone Number</strong><%= comapany.phoneNumber %></p>
+        <h3><%=company.name %></h3>
+        <div>
+            <%= company.address %>
+            <p>
+                <strong>Email : </strong><%= company.email %>
+                <strong>Phone Number : </strong><%= company.phoneNumber %>
+            </p>
+        </div>
+        
 
-
-    </article>
+     </article>
 
   
 

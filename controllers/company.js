@@ -8,7 +8,7 @@ const db  = require('../models')
 
 
 
-// index routes
+// Index Route
 router.get('/', (req, res)=>{
     
   db.Company.find({}, (error , foundCompanies)=>{
@@ -25,7 +25,7 @@ router.get('/', (req, res)=>{
 })
 
 
-// new routes
+// New Route
 router.get('/new', (req, res)=>{
     res.render('new.ejs')
  
@@ -33,7 +33,7 @@ router.get('/new', (req, res)=>{
 
 
 
-// post routes
+// Post Route
 router.post('/' , (req, res)=>{
     db.Company.create(req.body, (error, companyCreated)=>{
         if(error){
@@ -45,6 +45,19 @@ router.post('/' , (req, res)=>{
 })
 
 
+// Show Route
+
+router.get('/:id', (req, res)=>{
+
+    db.Company.findById(req.params.id, (error, foundCompany)=>{
+        if(error){
+            return res.send(error)
+        }else{
+            const context = {company: foundCompany}
+            res.render('show.ejs', context)
+        }
+    })
+})
 
 
 
