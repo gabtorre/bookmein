@@ -72,6 +72,20 @@ router.get('/:id', (req, res)=>{
 
 
 
+// Edit Route
+router.get('/:id/edit', (req, res)=>{
+    db.Booking.findById(req.params.id, (error, foundBooking)=>{
+        if(error){
+            return res.send(error)
+        }else{
+            const context = {booking: foundBooking}
+            res.render('./booking/edit.ejs' , context)
+        }
+    })
+})
+
+
+
 
 
   module.exports = router
