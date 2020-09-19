@@ -46,7 +46,6 @@ router.post('/' , (req, res)=>{
 
 
 // Show Route
-
 router.get('/:id', (req, res)=>{
 
     db.Company.findById(req.params.id, (error, foundCompany)=>{
@@ -61,7 +60,6 @@ router.get('/:id', (req, res)=>{
 
 
 // Edit Route
-
 router.get('/:id/edit', (req, res)=>{
     db.Company.findById(req.params.id, (error, foundCompany)=>{
         if(error){
@@ -89,9 +87,8 @@ router.put('/:id', (req, res)=>{
 
 
 // Delete Route
-
 router.delete('/:id', (req , res)=>{
-    db.Company.findByIdAndDelete(rew.params.id, (error, companyDeleted)=>{
+    db.Company.findByIdAndDelete(req.params.id, (error, companyDeleted)=>{
         if(error){
             return res.send(error)
         }else{
