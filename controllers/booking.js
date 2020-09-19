@@ -7,6 +7,10 @@ const db  = require('../models')
 
 
 
+// an array of Days
+const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
+
+
 // Index Route
 router.get('/', (req, res)=>{
     
@@ -34,14 +38,11 @@ router.get('/new', (req, res)=>{
 
   // Post Route
 router.post('/' , (req, res)=>{
-    
-    // defines an array of days
-const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
 
  // takes a date and asigns it 
 let day = new Date(req.body.day)
 
-// asigns a day to req.body.day 
+// asigns a day to req.body.day from days array
 req.body.day = days[day.getDay()]
 
 db.Booking.create(req.body, (error, createdADay)=>{ 
@@ -80,6 +81,25 @@ router.get('/:id/edit', (req, res)=>{
         }else{
             const context = {booking: foundBooking}
             res.render('./booking/edit.ejs' , context)
+        }
+    })
+})
+
+
+// Put Route 
+router.put('/:id', (req, res)=>{
+
+// takes a date and asigns it 
+let day = new Date(req.body.day)
+
+// asigns a day to req.body.day from days array
+req.body.day = days[day.getDay()]
+
+    db.Booking.findByIdAndUpdate(req.params.id, req.body, {new: true}, (error, bookingUpdated)=>{
+        if(error){
+           return res.send(error)
+        }else{
+            res.redirect(`/booking`)
         }
     })
 })
