@@ -20,7 +20,7 @@ app.use(methodOverride("_method"));
 
 // View Route
 app.get('/', (req, res) => {
-    res.send('Hello')
+    res.render('home.ejs')
 })
 
 // Company Route
