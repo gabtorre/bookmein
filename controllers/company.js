@@ -88,4 +88,17 @@ router.put('/:id', (req, res)=>{
 
 
 
+// Delete Route
+
+router.delete('/:id', (req , res)=>{
+    db.Company.findByIdAndDelete(rew.params.id, (error, companyDeleted)=>{
+        if(error){
+            return res.send(error)
+        }else{
+            res.redirect('/company')
+        }
+    })
+})
+
+
 module.exports = router
