@@ -60,6 +60,19 @@ router.get('/:id', (req, res)=>{
 })
 
 
+// Edit Route
+
+router.get('/:id/edit', (req, res)=>{
+    db.Company.findById(req.params.id, (error, foundCompany)=>{
+        if(error){
+            return res.send(error)
+        }else{
+            const context = {company: foundCompany}
+            res.render('edit.ejs' , context)
+        }
+    })
+})
+
 
 
 module.exports = router
