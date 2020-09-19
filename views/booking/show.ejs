@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head') %>
+    <title>Booking details</title>
+</head>
+<body>
+    <%- include('../partials/nav') %>
+    <header>
+        <h1>Show Page</h1>
+
+    </header>
+    <article>
+        
+            <p>
+             <h4><%=booking.day %></h4>
+           <strong> <%= booking.time %></strong>
+                    
+            </p>
+            <p>
+                <%= booking.message %>
+            </p>
+        
+       
+
+     </article>
+
+  
+
+
+</body>
+</html>
