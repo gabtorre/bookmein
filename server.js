@@ -21,7 +21,7 @@ app.use(methodOverride("_method"));
 // View Route
 app.get('/', (req, res) => {
     res.render('home.ejs')
-})
+});
 
 // Company Route
 app.use('/company', controllers.company);
