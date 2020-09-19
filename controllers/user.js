@@ -76,5 +76,15 @@ router.put('/:id', (req, res) => {
 });
 
 
+// Delete Route
+router.delete('/:id', (req, res) => {
+    db.User.findByIdAndDelete(req.params.id, (error, deletedUser) => {
+        if (error) {
+            console.log(error)
+        } else {
+            res.redirect('/user')
+        }
+    })
+});
 
 module.exports = router;
