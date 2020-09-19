@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head') %>
+    <title>Bookings</title>
+</head>
+<body>
+    <%- include('../partials/nav') %>
+    <h1>Index Page</h1>
+    <nav>
+        <a href="/booking/new">Add Bookings</a>
+    </nav>
+    <section>
+          <h3>Avaiable Bookings</h3>
+        <ul>
+            <% bookings.forEach((booking) =>{ %> 
+                <li><a href="/booking/<%= booking._id%>"><%= booking.message %></a></li>
+
+             <%  }) %> 
+        </ul>
+      
+    </section>
+
+</body>
+</html>

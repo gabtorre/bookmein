@@ -17,8 +17,12 @@ router.get('/', (req, res)=>{
           const context = {bookings: foundbookings}
            
           res.render('./booking/index.ejs', context)
+     
          
   
         }
     } )  
   })
+
+
+  module.exports = router
