@@ -33,6 +33,16 @@ router.get('/new', (req, res)=>{
 
 
 
+// post routes
+router.post('/' , (req, res)=>{
+    db.Company.create(req.body, (error, companyCreated)=>{
+        if(error){
+        return res.send(error)
+        }else{
+            res.redirect('/company')
+        }
+    })
+})
 
 
 

@@ -11,9 +11,9 @@
         <a href="/company/new">Add New Company</a>
     </nav>
     <section>
-          <h3>Companies</h3>
+          <h3>Companies name list</h3>
         <ul>
-            <% Companies.forEach((company) =>{ %> 
+            <% companies.forEach((company) =>{ %> 
                 <li><a href="/company/<%= company._id%>"><%= company.name %></a></li>
 
              <%  }) %> 

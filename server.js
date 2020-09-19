@@ -4,12 +4,13 @@ const methodOverride = require("method-override");
 
 // Interal Modules
 const controllers = require('./controllers')
+const db = require('./models')
 
 // Instanced Modules
 const app = express();
 
 // Configuration
-const PORT = 3000;
+const PORT = 4000;
 
 // Middleware
 app.use(express.urlencoded({ extended: true }));
