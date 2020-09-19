@@ -17,7 +17,7 @@ router.get('/', (req, res)=>{
       }else{
         const context = {companies: foundCompanies}
          
-        res.render('index.ejs', context)
+        res.render('./company/index.ejs', context)
        
 
       }
@@ -27,7 +27,7 @@ router.get('/', (req, res)=>{
 
 // New Route
 router.get('/new', (req, res)=>{
-    res.render('new.ejs')
+    res.render('./company/new.ejs')
  
   })
 
@@ -53,7 +53,7 @@ router.get('/:id', (req, res)=>{
             return res.send(error)
         }else{
             const context = {company: foundCompany}
-            res.render('show.ejs', context)
+            res.render('./company/show.ejs', context)
         }
     })
 })
@@ -66,7 +66,7 @@ router.get('/:id/edit', (req, res)=>{
             return res.send(error)
         }else{
             const context = {company: foundCompany}
-            res.render('edit.ejs' , context)
+            res.render('./company/edit.ejs' , context)
         }
     })
 })
