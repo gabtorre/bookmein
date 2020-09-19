@@ -56,4 +56,22 @@ db.Booking.create(req.body, (error, createdADay)=>{
 
 
 
+// Show Route
+router.get('/:id', (req, res)=>{
+
+    db.Booking.findById(req.params.id, (error, foundBooking)=>{
+        if(error){
+            return res.send(error)
+        }else{
+            const context = {booking: foundBooking}
+            res.render('./booking/show.ejs', context)
+        }
+    })
+})
+
+
+
+
+
+
   module.exports = router
