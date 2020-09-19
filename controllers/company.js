@@ -9,7 +9,6 @@ const db  = require('../models')
 
 
 // index routes
-
 router.get('/', (req, res)=>{
     
   db.Company.find({}, (error , foundCompanies)=>{
@@ -24,6 +23,17 @@ router.get('/', (req, res)=>{
       }
   } )  
 })
+
+
+// new routes
+router.get('/new', (req, res)=>{
+    res.render('new.ejs')
+ 
+  })
+
+
+
+
 
 
 
