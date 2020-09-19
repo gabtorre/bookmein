@@ -12,15 +12,25 @@
     </header>
     <article>
         
+         <div>
             <p>
-             <h4><%=booking.day %></h4>
-           <strong> <%= booking.time %></strong>
-                    
+                <h4><%=booking.day %></h4>
+              <strong> <%= booking.time %></strong>
+                       
             </p>
-            <p>
-                <%= booking.message %>
-            </p>
+               <p> <%= booking.message %></p>
+   
+         </div>
+
+         
+        <div>
+
+            <a href="/booking/<%=booking._id%>/edit"  >Edit</a>
+            <form style="display: inline-block;" action="/booking/<%=booking._id%>?_method=DELETE" method="POST">
+                <input type="submit"  value="DELETE All">
+             </form>
         
+        </div>
        
 
      </article>
