@@ -75,4 +75,17 @@ router.get('/:id/edit', (req, res)=>{
 
 
 
+// Put Route 
+router.put('/:id', (req, res)=>{
+    db.Company.findByIdAndUpdate(req.params.id, req.body, {new: true}, (error, infoUpdated)=>{
+        if(error){
+           return res.send(error)
+        }else{
+            res.redirect(`/company/${infoUpdated._id}`)
+        }
+    })
+})
+
+
+
 module.exports = router
