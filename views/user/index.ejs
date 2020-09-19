@@ -6,6 +6,11 @@
     <title>Users</title>
 </head>
 <body>
-    
+    <ul>
+        <% user.forEach((user) =>{ %> 
+            <li><a href="/user/<%= user._id%>"><%= user.name %></a></li>
+
+         <%  }) %> 
+    </ul>
 </body>
 </html>

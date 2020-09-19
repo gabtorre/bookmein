@@ -6,43 +6,62 @@ const db = require('../models');
 
 // Index Route
 router.get('/', (req, res) => {
-    res.send("User Index")
+    db.User.find({}, (error, foundUsers) => {
+        if (error) {
+            console.log(error)
+        } else {
+            res.render('user/index.ejs', {
+                user: foundUsers,
+            })
+        }
+    })
 });
 
 
 // New Route
 router.get('/new', (req, res) => {
-    res.send('User New')
+    res.render('user/new.ejs')
 });
 
 
 // Create Route
 router.post('/', (req, res) => {
-    res.send('Post User')
+    db.User.create(req.body, (error, createdUser) => {
+        if (error) {
+            console.log(error)
+        } else {
+            res.redirect('/user')
+        }
+    })
 });
 
 
 // Show Route
 router.get('/:id', (req, res) => {
-    res.send('User Index')
+    db.User.findById(req.params.id, (error, foundUser) => {
+        if (error) {
+            console.log(error)
+        } else {
+            res.render('user/show.ejs', {
+                user: foundUser,
+            })
+        }
+    })
 });
 
 
 // Edit Route
 router.get('/:id/edit', (req, res) => {
-    res.send('Edit User')
+    db.User.findById(req.params.id, (error, foundUser) => {
+        if (error) {
+            console.log(error)
+        } else {
+            res.render('user/edit.ejs', {
+                user: foundUser,
+            })
+        }
+    })
 });
 
-
-// Update Route
-router.put('/:id', (req, res) => {
-    res.send('Update User')
-});
-
-
-// Delete Route
-router.delete('/:id', (req, res) => {
-    res.send('User Delete')
-});
 
 module.exports = router;
