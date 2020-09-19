@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head') %>
+    <title>Edit User</title>
+</head>
+<body>
+    <%- include('../partials/nav') %>
+    <section>
+        <form action="/user/<%=user._id%>?_method=PUT" method="POST">
+           
+            Name : <input type="text" name="name" value="<%=user.name %>"><br>
+            Phone Number: <input type="text" name="phoneNumber" value="<%=user.phoneNumber%>"><br>
+            Email : <input type="email" name="email"  value="<%=user.email %>"><br>
+            <input type="submit" value="SUBMIT CHANGES">
+    
+        </form>
+        </section>
+</body>
+</html>

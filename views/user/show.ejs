@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head') %>
+    <title>User Details</title>
+</head>
+<body>
+    <%- include('../partials/nav') %>
+    <article>
+        <h3><%=user.name %></h3>
+        <div>
+            <%= user.address %>
+            <p>
+                <strong>Email : </strong><%= user.email %>
+                <strong>Phone Number : </strong><%= user.phoneNumber %>
+            </p>
+        </div>
+        
+        <a href="/user/<%=user._id%>/edit"  >Edit</a>
+        <form style="display: inline-block;" action="/user/<%=user._id%>?_method=DELETE" method="POST">
+            <input type="submit"  value="DELETE">
+            </form>
+
+     </article>
+</body>
+</html>

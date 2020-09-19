@@ -5,10 +5,8 @@ const mongoose = require("mongoose");
 const userSchema = new mongoose.Schema(
   {
     name: { type: String, required: [true, "You must provide a name."] },
-    address: {type: String, required:[true, "You must provide a address."] },
+    email: {type: String, required:[true, "You must provide an email."] },
     phoneNumber: {type: Number, required:[true, "You must provide a phone number."] },
-    email: {type: String, required:[true, "You must provide a email."] },
-  
  },
   {
     timestamps: true, 
