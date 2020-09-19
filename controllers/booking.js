@@ -7,7 +7,7 @@ const db  = require('../models')
 
 
 
-// an array of Days
+// An array of Days
 const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
 
 
@@ -29,11 +29,13 @@ router.get('/', (req, res)=>{
   })
 
 
+
   // New Route
 router.get('/new', (req, res)=>{
     res.render('./booking/new.ejs')
  
   })
+
 
 
   // Post Route
@@ -86,6 +88,8 @@ router.get('/:id/edit', (req, res)=>{
 })
 
 
+
+
 // Put Route 
 router.put('/:id', (req, res)=>{
 
@@ -100,6 +104,19 @@ req.body.day = days[day.getDay()]
            return res.send(error)
         }else{
             res.redirect(`/booking`)
+        }
+    })
+})
+
+
+
+// Delete Route
+router.delete('/:id', (req , res)=>{
+    db.Booking.findByIdAndDelete(req.params.id, (error, deletedBooking)=>{
+        if(error){
+            return res.send(error)
+        }else{
+            res.redirect('/booking')
         }
     })
 })
