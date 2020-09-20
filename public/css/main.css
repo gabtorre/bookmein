@@ -1,0 +1,40 @@
+body {
+    background-color: #121213;
+}
+
+.bg-light {
+    background-color:#f5f7fe!important;
+}
+
+.nav {
+    margin-left: auto;
+}
+
+.navbar {
+    font-family: 'Arimo', sans-serif;
+    letter-spacing: 1px;
+    font-weight: 700;
+    font-size: .75rem;
+    line-height: 1.5;
+    text-transform: uppercase;
+}
+
+.navbar a {
+    color: #121213;
+}
+
+.navbar-brand {
+    text-transform: capitalize;
+}
+
+.nav-link {
+    padding: 2.25rem 0;
+    position: relative;
+    padding-left: 0 1.25rem;
+    padding-right: 1.25rem;
+}
+
+.carousel-item > img {
+    width: 100%;
+    height: auto;
+}
