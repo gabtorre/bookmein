@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head') %>
+    <title>Add new time</title>
+</head>
+<body>
+    <%- include('../partials/nav') %>
+    <nav>
+        <h1>New Page</h1>
+      
+    </nav>
+    <section>
+        <h4>Make an appoitment</h4>
+    <form action="/booking" method="POST">
+
+        Day : <input type="date" name="day"><br>
+       Time: <select name="time">
+            <option default>Select a time</option>
+             <option>10:00am</option>
+            <option >11:00am</option>
+            <option >12:00pm</option>
+            <option >1:00pm</option>
+            <option >2:00pm</option>
+            <option >3:00pm</option>
+           
+            
+        </select><br>
+
+
+        Message : <textarea name="message" id="" cols="30" rows="3"></textarea><br>
+        <input type="submit" value="SUBMIT">
+
+    </form>
+    </section>
+
+</body>
+</html>
