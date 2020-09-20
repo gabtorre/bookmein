@@ -1,6 +1,7 @@
 // External Modules
 const express = require('express');
 const methodOverride = require("method-override");
+const path = require('path');
 
 // Interal Modules
 const controllers = require('./controllers')
@@ -15,6 +16,8 @@ const PORT = 4000;
 // Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
+app.use(express.static('public'));
+app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/'));
 
 // ROUTES
 
