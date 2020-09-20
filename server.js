@@ -29,6 +29,10 @@ app.use('/company', controllers.company);
 // User Route
 app.use('/user', controllers.user);
 
+// Booking Route
+app.use('/booking', controllers.booking);
+
+
 // Server Listener
 app.listen(PORT, () => console.log(`App is running on port ${PORT}`))
 
