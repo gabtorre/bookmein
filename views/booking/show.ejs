@@ -6,10 +6,11 @@
 </head>
 <body>
     <%- include('../partials/nav') %>
-    <header>
-        <h1>Show Page</h1>
 
-    </header>
+        <h1>Booking Show Page</h1>
+
+
+
     <article>
         
          <div>
@@ -22,7 +23,27 @@
    
          </div>
 
-         
+
+
+
+         <form action="/booking/<%= booking._id %>/join?_method=PUT" method="POST">
+            <p>
+                <select name="user">
+                  <option default>Select a User</option>
+                  <% user.forEach(user => { %>
+                  <option value="<%= user._id %>"><%= user.name %></option>
+                  <% }) %>
+                </select>
+            </p>
+            <input type="submit" value="SUBMIT">
+        </form>
+
+
+
+
+
+        
+
         <div>
 
             <a href="/booking/<%=booking._id%>/edit"  >Edit</a>

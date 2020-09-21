@@ -6,10 +6,10 @@
 </head>
 <body>
     <%- include('../partials/nav') %>
-    <nav>
-        <h1>New Page</h1>
+
+        <h1>Booking New Page</h1>
       
-    </nav>
+
     <section>
         <h4>Make an appoitment</h4>
     <form action="/booking" method="POST">
@@ -39,14 +39,7 @@
             </select>
         </p>
 
-        <p>
-            <select name="user">
-              <option default>Select a User</option>
-              <% user.forEach(user => { %>
-              <option value="<%= user._id %>"><%= user.name %></option>
-              <% }) %>
-            </select>
-        </p>
+      
 
         <input type="submit" value="SUBMIT">
 
