@@ -1,7 +1,7 @@
 /* External mudules */
-const express = require('express')
-const router = express.Router()
-const db  = require('../models')
+const express = require('express');
+const router = express.Router();
+const db  = require('../models');
 
 
 
@@ -16,7 +16,6 @@ router.get('/', (req, res)=>{
          
         res.render('./company/index.ejs', context)
        
-
       }
   } )  
 })
@@ -44,8 +43,8 @@ router.post('/' , (req, res)=>{
 
 
 
-// Show Route
-router.get('/:id', (req, res) => {
+//Show Route
+router.get('/:id', async (req, res) => {
     db.Company.findById(req.params.id)
     .populate('bookings')
     .exec( (error, foundCompany) => {

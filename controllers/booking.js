@@ -1,7 +1,7 @@
 /* External mudules */
-const express = require('express')
-const router = express.Router()
-const db  = require('../models')
+const express = require('express');
+const router = express.Router();
+const db  = require('../models');
 
 
 
@@ -84,7 +84,7 @@ router.get('/:id', (req, res)=>{
             res.render('./booking/show.ejs', context)
         }
     })
-})
+});
 
 
 
