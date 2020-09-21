@@ -1,10 +1,7 @@
-
 /* External mudules */
 const express = require('express')
 const router = express.Router()
 const db  = require('../models')
-
-
 
 
 
@@ -23,6 +20,7 @@ router.get('/', (req, res)=>{
       }
   } )  
 })
+
 
 
 // New Route
@@ -45,18 +43,22 @@ router.post('/' , (req, res)=>{
 })
 
 
-// Show Route
-router.get('/:id', (req, res)=>{
 
-    db.Company.findById(req.params.id, (error, foundCompany)=>{
+// Show Route
+router.get('/:id', (req, res) => {
+    db.Company.findById(req.params.id)
+    .populate('bookings')
+    .exec( (error, foundCompany) => {
         if(error){
             return res.send(error)
-        }else{
-            const context = {company: foundCompany}
-            res.render('./company/show.ejs', context)
         }
+        res.render('./company/show.ejs', {
+            company: foundCompany
+        })
+        console.log(foundCompany)
     })
-})
+});
+
 
 
 // Edit Route
@@ -98,4 +100,5 @@ router.delete('/:id', (req , res)=>{
 })
 
 
-module.exports = router
+
+module.exports = router;

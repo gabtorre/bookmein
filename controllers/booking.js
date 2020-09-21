@@ -1,4 +1,3 @@
-
 /* External mudules */
 const express = require('express')
 const router = express.Router()
@@ -6,9 +5,9 @@ const db  = require('../models')
 
 
 
-
 // An array of Days
 const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
+
 
 
 // Index Route
@@ -30,32 +29,47 @@ router.get('/', (req, res)=>{
 
 
 
-  // New Route
-router.get('/new', (req, res)=>{
-    res.render('./booking/new.ejs')
- 
-  })
+// New Route
+router.get('/new', async (req, res) => {
+    try {
+        const fondCompany = await db.Company.find({});
+        const foundUser = await db.User.find({});
+
+        res.render('./booking/new.ejs', {
+            company: fondCompany,
+            user: foundUser,
+        });
+    } catch (error) {
+        console.log(error);
+        res.send({ message: "Internal server error" });
+    }
+  });
 
 
 
-  // Post Route
-router.post('/' , (req, res)=>{
+// Post Route
+router.post('/' , async (req, res)=>{
+    try {
+    // takes a date and asigns it 
+    //let day = new Date(req.body.day)
+    // asigns a day to req.body.day from days array
+    //req.body.day = days[day.getDay()]
 
- // takes a date and asigns it 
-let day = new Date(req.body.day)
+    const createdADay = await db.Booking.create(req.body);
+    const foundCompany = await db.Company.findById(req.body.company);
+    const foundUser = await db.User.findById(req.body.user)
 
-// asigns a day to req.body.day from days array
-req.body.day = days[day.getDay()]
+    createdADay.user  = foundUser;
 
-db.Booking.create(req.body, (error, createdADay)=>{ 
-        if(error){
-            return res.send(error)
-        }else{
-            res.redirect('/booking')
-        }
-    })
-})
-
+    foundCompany.bookings.push(createdADay);
+    await foundCompany.save();
+    res.redirect('/booking');
+        
+    } catch (error) {
+        console.log(error);
+        res.send({ message: "Internal server error" });
+    }
+});
 
 
 
@@ -74,7 +88,6 @@ router.get('/:id', (req, res)=>{
 
 
 
-
 // Edit Route
 router.get('/:id/edit', (req, res)=>{
     db.Booking.findById(req.params.id, (error, foundBooking)=>{
@@ -86,7 +99,6 @@ router.get('/:id/edit', (req, res)=>{
         }
     })
 })
-
 
 
 
@@ -103,7 +115,7 @@ req.body.day = days[day.getDay()]
         if(error){
            return res.send(error)
         }else{
-            res.redirect(`/booking`)
+            res.redirect('/booking')
         }
     })
 })
@@ -123,6 +135,4 @@ router.delete('/:id', (req , res)=>{
 
 
 
-
-
-  module.exports = router
+module.exports = router;

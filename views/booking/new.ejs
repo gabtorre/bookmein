@@ -29,6 +29,25 @@
 
 
         Message : <textarea name="message" id="" cols="30" rows="3"></textarea><br>
+
+        <p>
+            <select name="company">
+              <option default>Select a Company</option>
+              <% company.forEach(company => { %>
+              <option value="<%= company._id %>"><%= company.name %></option>
+              <% }) %>
+            </select>
+        </p>
+
+        <p>
+            <select name="user">
+              <option default>Select a User</option>
+              <% user.forEach(user => { %>
+              <option value="<%= user._id %>"><%= user.name %></option>
+              <% }) %>
+            </select>
+        </p>
+
         <input type="submit" value="SUBMIT">
 
     </form>
