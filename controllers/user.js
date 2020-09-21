@@ -1,7 +1,8 @@
+/* External mudules */
 const express = require('express');
 const router = express.Router();
-
 const db = require('../models');
+
 
 
 // Index Route
@@ -18,10 +19,12 @@ router.get('/', (req, res) => {
 });
 
 
+
 // New Route
 router.get('/new', (req, res) => {
     res.render('user/new.ejs')
 });
+
 
 
 // Create Route
@@ -34,6 +37,7 @@ router.post('/', (req, res) => {
         }
     })
 });
+
 
 
 // Show Route
@@ -50,6 +54,7 @@ router.get('/:id', (req, res) => {
 });
 
 
+
 // Edit Route
 router.get('/:id/edit', (req, res) => {
     db.User.findById(req.params.id, (error, foundUser) => {
@@ -64,6 +69,7 @@ router.get('/:id/edit', (req, res) => {
 });
 
 
+
 // Update Route
 router.put('/:id', (req, res) => {
     db.User.findByIdAndUpdate(req.params.id, req.body, {new:true}, (error, updatedUser) => {
@@ -76,6 +82,7 @@ router.put('/:id', (req, res) => {
 });
 
 
+
 // Delete Route
 router.delete('/:id', (req, res) => {
     db.User.findByIdAndDelete(req.params.id, (error, deletedUser) => {
@@ -86,5 +93,7 @@ router.delete('/:id', (req, res) => {
         }
     })
 });
+
+
 
 module.exports = router;

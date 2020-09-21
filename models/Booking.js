@@ -9,8 +9,7 @@ const bookingSchema = new mongoose.Schema(
     message: { type: String },
     company: { type: mongoose.Schema.Types.ObjectId, ref: "Company" },
     user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
- 
-  
+
  },
   {
     timestamps: true, 
