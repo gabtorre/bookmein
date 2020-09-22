@@ -42,7 +42,7 @@ app.use(session({
 
 // View Route
 app.get('/', (req, res) => {
-    res.render('home.ejs')
+    res.render('home.ejs', {user: req.session.currentUser})
 });
 
 
