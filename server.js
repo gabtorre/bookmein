@@ -38,6 +38,16 @@ app.use(session({
   }))
 
 
+// validates if user logs in 
+  const authRequired = function(req, res , next){
+     if(req.session.currentUser){
+      return res.redirect('/register')
+    }else{
+      next()
+    }
+      
+    }
+
 // ROUTES
 
 // View Route
@@ -51,7 +61,7 @@ app.use('/', controllers.auth)
 
 
 // Company Route
-app.use('/company', controllers.company);
+app.use('/company', authRequired, controllers.company);
 
 // User Route
 app.use('/user', controllers.user);
