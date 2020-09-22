@@ -8,8 +8,8 @@
     <%- include('../partials/nav') %>
     <h1>User Index Page</h1>
     <ul>
-        <% user.forEach((user) =>{ %> 
-            <li><a href="/user/<%= user._id%>"><%= user.name %></a></li>
+        <% foundUsers.forEach((oneUser) =>{ %> 
+            <li><a href="/user/<%= oneUser._id%>"><%= oneUser.name %></a></li>
 
          <%  }) %> 
     </ul>

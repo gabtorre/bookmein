@@ -6,6 +6,16 @@ const session = require('express-session')
 
 
 
+// validates if user logs in 
+const authRequired = function(req, res , next){
+    if(!req.session.currentUser){
+     return res.redirect('/login')
+   }
+   next();
+   };
+
+
+
 // An array of Days
 const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
 
@@ -34,7 +44,7 @@ router.get('/', (req, res)=>{
 
 
 // New Route
-router.get('/new', async (req, res) => {
+router.get('/new', authRequired, async (req, res) => {
     try {
         const fondCompany = await db.Company.find({});
         //const foundUser = await db.User.find({});
@@ -90,7 +100,7 @@ router.get('/:id', async (req, res) => {
         res.render('./booking/show.ejs', {
             booking: foundBooking,
             user: req.session.currentUser, // session current user after login 
-            user: foundUser
+            foundUser: foundUser
         })
         
     } catch (error) {
@@ -103,7 +113,7 @@ router.get('/:id', async (req, res) => {
 
 
 // Edit Route
-router.get('/:id/edit', (req, res)=>{
+router.get('/:id/edit', authRequired, (req, res)=>{
     db.Booking.findById(req.params.id, (error, foundBooking)=>{
         if(error){
             return res.send(error)
@@ -161,7 +171,7 @@ router.put('/:id/join' , async (req, res)=>{
 
 
 // Delete Route
-router.delete('/:id', (req , res)=>{
+router.delete('/:id', authRequired, (req , res)=>{
     db.Booking.findByIdAndDelete(req.params.id, (error, deletedBooking)=>{
         if(error){
             return res.send(error)

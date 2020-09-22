@@ -8,11 +8,11 @@
     <%- include('../partials/nav') %>
     <h1>User Edit Page</h1>
     <section>
-        <form action="/user/<%=user._id%>?_method=PUT" method="POST">
+        <form action="/user/<%=foundUser._id%>?_method=PUT" method="POST">
            
-            Name : <input type="text" name="name" value="<%=user.name %>"><br>
+            Name : <input type="text" name="name" value="<%=foundUser.name %>"><br>
             Phone Number: <input type="text" name="phoneNumber" value="<%=user.phoneNumber%>"><br>
-            Email : <input type="email" name="email"  value="<%=user.email %>"><br>
+            Email : <input type="email" name="email"  value="<%=foundUser.email %>"><br>
             <input type="submit" value="SUBMIT CHANGES">
     
         </form>

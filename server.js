@@ -12,6 +12,8 @@ const db = require('./models')
 // Instanced Modules
 const app = express();
 
+//add role to company in company Schema
+
 // Configuration
 const PORT = 4000;
 
@@ -40,13 +42,12 @@ app.use(session({
 
 // validates if user logs in 
   const authRequired = function(req, res , next){
-     if(req.session.currentUser){
-      return res.redirect('/register')
-    }else{
-      next()
+    console.log(req.session.currentUser.id)
+     if(!req.session.currentUser){
+      return res.redirect('/login')
     }
-      
-    }
+    next();
+    };
 
 // ROUTES
 

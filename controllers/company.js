@@ -28,7 +28,6 @@ router.get('/', (req, res)=>{
 // New Route
 router.get('/new', (req, res)=>{
     res.render('./company/new.ejs', {user: req.session.currentUser})
- 
   })
 
 
@@ -48,18 +47,23 @@ router.post('/' , (req, res)=>{
 
 //Show Route
 router.get('/:id', async (req, res) => {
-    db.Company.findById(req.params.id)
-    .populate('bookings')
-    .exec( (error, foundCompany) => {
-        if(error){
-            return res.send(error)
-        }
+
+    try {
+        //const foundCompany = await db.Company.findById(req.params.id).populate('bookings')
+        const foundCompany = await db.Company.findOne({ _id: req.params.id})
+        .populate('bookings').exec()
+        
+        //console.log(`found company : ${foundCompany}`)
+
         res.render('./company/show.ejs', {
             company: foundCompany,
             user: req.session.currentUser // session current user after login 
         })
-        console.log(foundCompany)
-    })
+        
+    } catch (error) {
+        console.log(error);
+        res.send({ message: "Internal server error" });
+    }
 });
 
 

@@ -6,6 +6,9 @@
 </head>
 <body>
     <%- include('../partials/nav') %>
+        <% if (user) { %>
+         <h1>Hello User</h1>
+        <% } %>   
 
         <h1>Booking Show Page</h1>
 
@@ -25,33 +28,36 @@
 
 
 
-
-         <form action="/booking/<%= booking._id %>/join?_method=PUT" method="POST">
+      
+        <form action="/booking/<%= booking._id %>/join?_method=PUT" method="POST">
             <p>
                 <select name="user">
                   <option default>Select a User</option>
-                  <% user.forEach(user => { %>
-                  <option value="<%= user._id %>"><%= user.name %></option>
+                  <% foundUser.forEach(oneUser => { %>
+                  <option value="<%= oneUser._id %>"><%= oneUser.name %></option>
                   <% }) %>
                 </select>
             </p>
             <input type="submit" value="SUBMIT">
         </form>
+   
 
 
 
 
+
+        <% if (user) { %>
+            <div>
+
+                <a href="/booking/<%=booking._id%>/edit"  >Edit</a>
+                <form style="display: inline-block;" action="/booking/<%=booking._id%>?_method=DELETE" method="POST">
+                    <input type="submit"  value="DELETE All">
+                 </form>
+            
+            </div>
+        <% } %>
 
         
-
-        <div>
-
-            <a href="/booking/<%=booking._id%>/edit"  >Edit</a>
-            <form style="display: inline-block;" action="/booking/<%=booking._id%>?_method=DELETE" method="POST">
-                <input type="submit"  value="DELETE All">
-             </form>
-        
-        </div>
        
 
      </article>
