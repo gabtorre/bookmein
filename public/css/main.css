@@ -19,6 +19,7 @@ body {
     text-transform: uppercase;
 }
 
+
 .navbar a {
     color: #121213;
 }
@@ -28,7 +29,7 @@ body {
 }
 
 .nav-link {
-    padding: 2.25rem 0;
+    padding: 2rem 0;
     position: relative;
     padding-left: 0 1.25rem;
     padding-right: 1.25rem;
@@ -44,3 +45,36 @@ footer {
     font-size: 12px;
     margin-top: 50px;
 }
+
+.logout {
+    background: none!important;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    padding-right: 1.25rem;
+}
+
+.logout a {
+    margin-left: 2px;
+}
+
+.login-nav ul {
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+
+.login-nav a {
+    padding-right: 1.25rem;
+}
+
+.item:after {
+    content:"";
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    background:rgba(0,0,0,0.6);
+  }
+
+
