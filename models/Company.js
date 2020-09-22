@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-
+mongoose.set('debug', true);
 
 // set up schema
 const companySchema = new mongoose.Schema(

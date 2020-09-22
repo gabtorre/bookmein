@@ -26,11 +26,18 @@
 
      </article>
 
-     <h1> <% company.bookings.forEach(element => { %>
-         <p><%= element.day %> </p>
-         <p><%= element.time %></p>
-         <p><%= element.message %></p>
+     <h1> 
+        <% company.bookings.forEach(element => { %>
+         
+        <% if ( element.user) { %> 
+            <p><%= element.day %> </p>
+            <p><%= element.time %></p>
+            <p><%= element.message %></p>
+            <p><%= element.user %></p>
+        <% } %>
      <% }); %> </h1>
+
+     <hr>
 
 
 </body>

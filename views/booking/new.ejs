@@ -1,50 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <%- include('../partials/head') %>
     <title>Add new time</title>
-</head>
-<body>
+  </head>
+  <body>
     <%- include('../partials/nav') %>
 
+    
+
+
+    <div class="container w-50">
         <h1>Booking New Page</h1>
-      
+            <form action="/booking" method="POST">
+                <div class="form-group">
+                <label for="company">Company</label>
+                <select class="form-control" name="company">
+                <option default>Select a Company</option>
+                <% company.forEach(company => { %>
+                <option value="<%= company._id %>"><%= company.name %></option>
+                <% }) %>
+                </select>
+                </div>
 
-    <section>
-        <h4>Make an appoitment</h4>
-    <form action="/booking" method="POST">
+                <div class="form-group">
+                    <label for="date-input">Date</label>
+                    <input name="day" class="form-control" type="date" value="2011-08-19" >
+                </div>
 
-        Day : <input type="date" name="day"><br>
-       Time: <select name="time">
-            <option default>Select a time</option>
-             <option>10:00am</option>
-            <option >11:00am</option>
-            <option >12:00pm</option>
-            <option >1:00pm</option>
-            <option >2:00pm</option>
-            <option >3:00pm</option>
-           
-            
-        </select><br>
+                <div class="form-group">
+                <label for="time">Time</label>
+                <select class="form-control" name="time">
+                <option default>Select a time</option>
+                <option>10:00am</option>
+                <option>11:00am</option>
+                <option>12:00pm</option>
+                <option>1:00pm</option>
+                <option>2:00pm</option>
+                <option>3:00pm</option>
+                </select>
+                </div>
 
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea class="form-control" name="message" rows="3"></textarea>
+                </div>
 
-        Message : <textarea name="message" id="" cols="30" rows="3"></textarea><br>
-
-        <p>
-            <select name="company">
-              <option default>Select a Company</option>
-              <% company.forEach(company => { %>
-              <option value="<%= company._id %>"><%= company.name %></option>
-              <% }) %>
-            </select>
-        </p>
-
-      
-
-        <input type="submit" value="SUBMIT">
-
-    </form>
-    </section>
-
-</body>
+              <input type="submit" value="SUBMIT" />
+            </form>
+      </div>
+      <%- include('../partials/footer') %>
+  </body>
 </html>
