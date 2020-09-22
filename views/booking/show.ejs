@@ -30,15 +30,8 @@
 
       
         <form action="/booking/<%= booking._id %>/join?_method=PUT" method="POST">
-            <p>
-                <select name="user">
-                  <option default>Select a User</option>
-                  <% foundUser.forEach(oneUser => { %>
-                  <option value="<%= oneUser._id %>"><%= oneUser.name %></option>
-                  <% }) %>
-                </select>
-            </p>
-            <input type="submit" value="SUBMIT">
+            
+            <input type="submit" value="Book This">
         </form>
    
 
