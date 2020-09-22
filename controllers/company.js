@@ -2,6 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const db  = require('../models');
+const session = require('express-session')
 
 
 
@@ -12,7 +13,9 @@ router.get('/', (req, res)=>{
       if(error){
           return res.send(error)
       }else{
-        const context = {companies: foundCompanies}
+        const context = {companies: foundCompanies ,
+            // session current user after login 
+            user: req.session.currentUser}
          
         res.render('./company/index.ejs', context)
        
@@ -24,7 +27,7 @@ router.get('/', (req, res)=>{
 
 // New Route
 router.get('/new', (req, res)=>{
-    res.render('./company/new.ejs')
+    res.render('./company/new.ejs', {user: req.session.currentUser})
  
   })
 
@@ -52,7 +55,8 @@ router.get('/:id', async (req, res) => {
             return res.send(error)
         }
         res.render('./company/show.ejs', {
-            company: foundCompany
+            company: foundCompany,
+            user: req.session.currentUser // session current user after login 
         })
         console.log(foundCompany)
     })
@@ -66,7 +70,7 @@ router.get('/:id/edit', (req, res)=>{
         if(error){
             return res.send(error)
         }else{
-            const context = {company: foundCompany}
+            const context = {company: foundCompany , user: req.session.currentUser}
             res.render('./company/edit.ejs' , context)
         }
     })

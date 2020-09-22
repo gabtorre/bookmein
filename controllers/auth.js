@@ -2,11 +2,12 @@ const express = require("express");
 const router = express.Router();
 const db = require("../models");
 const bcrypt = require("bcryptjs");
+const session = require('express-session')
 
 
 // Register Form
 router.get("/register", (req, res)=>{
-    res.render("auth/register.ejs");
+    res.render("auth/register.ejs", {user: req.session.currentUser});
 });
 
 
@@ -43,7 +44,7 @@ router.post("/register", async (req, res)=>{
 
 // Login Form
 router.get("/login", (req, res)=>{
-    res.render("auth/login.ejs");
+    res.render("auth/login.ejs", {user: req.session.currentUser});
 });
 
 
@@ -77,6 +78,12 @@ router.post("/login", async (req, res)=> {
     }
 })
 
+
+// Logout Route
+router.delete("/logout", async (req, res)=> {
+    await req.session.destroy();
+    res.redirect("/");
+})
 
 
 
