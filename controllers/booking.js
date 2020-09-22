@@ -33,11 +33,11 @@ router.get('/', (req, res)=>{
 router.get('/new', async (req, res) => {
     try {
         const fondCompany = await db.Company.find({});
-        const foundUser = await db.User.find({});
+        //const foundUser = await db.User.find({});
 
         res.render('./booking/new.ejs', {
             company: fondCompany,
-            user: foundUser,
+            //user: foundUser,
         });
     } catch (error) {
         console.log(error);
@@ -57,9 +57,12 @@ router.post('/' , async (req, res)=>{
 
     const createdADay = await db.Booking.create(req.body);
     const foundCompany = await db.Company.findById(req.body.company);
-    const foundUser = await db.User.findById(req.body.user)
+    //const foundUser = await db.User.findById(req.body.user)
 
-    createdADay.user  = foundUser;
+    //createdADay.user  = foundUser;
+
+    //foundUser.bookings.push(createdADay);
+    //await foundUser.save();
 
     foundCompany.bookings.push(createdADay);
     await foundCompany.save();
@@ -74,17 +77,22 @@ router.post('/' , async (req, res)=>{
 
 
 // Show Route
-router.get('/:id', (req, res)=>{
-
-    db.Booking.findById(req.params.id, (error, foundBooking)=>{
-        if(error){
-            return res.send(error)
-        }else{
-            const context = {booking: foundBooking}
-            res.render('./booking/show.ejs', context)
-        }
-    })
+router.get('/:id', async (req, res) => {
+    try {
+        const foundUser = await db.User.find({});
+        const foundBooking = await db.Booking.findById(req.params.id);
+        console.log(foundBooking)
+        res.render('./booking/show.ejs', {
+            booking: foundBooking,
+            user: foundUser,
+        })
+        
+    } catch (error) {
+        console.log(error);
+        res.send({ message: "Internal server error" });
+    }
 });
+
 
 
 
@@ -120,6 +128,27 @@ req.body.day = days[day.getDay()]
     })
 })
 
+// Put Route to update Booking
+router.put('/:id/join' , async (req, res)=>{
+    try {
+
+    const bookingToJoin = await db.Booking.findById(req.params.id)
+
+    const userId = req.body.user;
+
+    bookingToJoin.user = userId;
+
+    await bookingToJoin.save();
+
+    res.redirect('/booking');
+
+
+        
+    } catch (error) {
+        console.log(error);
+        res.send({ message: "Internal server error" });
+    }
+});
 
 
 // Delete Route
