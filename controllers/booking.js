@@ -19,15 +19,6 @@ const authRequired = function(req, res , next){
 // An array of Days
 const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
 
-// validates if user logs in 
-const authRequired = function(req, res , next){
-    if(req.session.currentUser){
-     return res.redirect('/register')
-   }else{
-     next()
-   }
-     
-   }
 
 
 
@@ -106,7 +97,7 @@ router.get('/:id', async (req, res) => {
     try {
         const foundUser = await db.User.find({});
         const foundBooking = await db.Booking.findById(req.params.id);
-        console.log(foundBooking)
+       
         res.render('./booking/show.ejs', {
             booking: foundBooking,
             user: req.session.currentUser, // session current user after login 
