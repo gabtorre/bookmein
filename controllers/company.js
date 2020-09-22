@@ -45,18 +45,32 @@ router.post('/' , (req, res)=>{
 
 //Show Route
 router.get('/:id', async (req, res) => {
-    db.Company.findById(req.params.id)
-    .populate('bookings')
-    .exec( (error, foundCompany) => {
-        if(error){
-            return res.send(error)
-        }
+
+    try {
+        const foundCompany = await db.Company.findById(req.params.id).populate('bookings')
+        
         res.render('./company/show.ejs', {
             company: foundCompany
         })
-        console.log(foundCompany)
-    })
+    } catch (error) {
+        console.log(error);
+        res.send({ message: "Internal server error" });
+    }
 });
+
+// router.get('/:id', async (req, res) => {
+//     db.Company.findById(req.params.id)
+//     .populate('bookings')
+//     .exec( (error, foundCompany) => {
+//         if(error){
+//             return res.send(error)
+//         }
+//         res.render('./company/show.ejs', {
+//             company: foundCompany
+//         })
+//         console.log(foundCompany)
+//     })
+// });
 
 
 
