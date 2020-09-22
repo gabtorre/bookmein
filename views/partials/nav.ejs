@@ -9,24 +9,48 @@
       <li class="nav-item">
         <a class="nav-link" href="/">Home</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link white" href="/company">Company Index</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link white" href="/company/new">Add Company</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link white" href="/user">User Index</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link white" href="/user/new">Add User</a>
-      </li>
+
+      <% if(user) {%>
+        
+        <li class="nav-item">
+          <a class="nav-link white" href="/company">Company Index</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link white" href="/company/new">Add Company</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link white" href="/user">User Index</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link white" href="/user/new">Add User</a>
+        </li>
+
+        
       <li class="nav-item">
         <a class="nav-link white" href="/booking">Booking Index</a>
       </li>
       <li class="nav-item">
         <a class="nav-link white" href="/booking/new">Add Booking</a>
       </li>
+
+        <li class="nav-item">
+          <a class="nav-link">
+            <form action="/logout?_method=DELETE" method="POST">
+              <input type="submit" value="Logout" style="border: none; background-color: #f5f7fe; font-size:1.4em;">
+              </form>
+          </a>
+        </li>
+       
+          <% } else { %> 
+            <li class="nav-item">
+              <a class="nav-link" href="../login">Login</a>
+            </li>
+             <li class="nav-item">
+              <a class="nav-link" href="../register">Sign UP</a>
+            </li>
+
+         
+      <% } %> 
     </ul>
   </div>
 </div>

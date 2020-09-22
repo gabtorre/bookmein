@@ -1,0 +1,24 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head') %>
+    <title>Register page</title>
+</head>
+<body>
+    <%- include('../partials/nav') %>
+
+
+    <h1>Register for an account today</h1>
+    <form action="/register" method="POST">
+        <input type="text" name="name" placeholder="name" required>
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="text" name="phoneNumber" placeholder="Phone Number" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <input type="submit" value="Register">
+    </form>
+      <h4>Already have an account ?</h4>
+      <button><a href="/login">Login</a></button>
+</body>
+</html>

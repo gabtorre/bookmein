@@ -2,6 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const db  = require('../models');
+const session = require('express-session')
 
 
 
@@ -17,7 +18,10 @@ router.get('/', (req, res)=>{
         if(error){
             return res.send(error)
         }else{
-          const context = {bookings: foundbookings}
+          const context = {bookings: foundbookings,
+           
+            // session current user after login 
+            user: req.session.currentUser}
            
           res.render('./booking/index.ejs', context)
      
@@ -37,7 +41,8 @@ router.get('/new', async (req, res) => {
 
         res.render('./booking/new.ejs', {
             company: fondCompany,
-            //user: foundUser,
+            user: req.session.currentUser// session current user after login 
+          
         });
     } catch (error) {
         console.log(error);
@@ -84,7 +89,8 @@ router.get('/:id', async (req, res) => {
         console.log(foundBooking)
         res.render('./booking/show.ejs', {
             booking: foundBooking,
-            user: foundUser,
+            user: req.session.currentUser, // session current user after login 
+            user: foundUser
         })
         
     } catch (error) {
@@ -102,7 +108,10 @@ router.get('/:id/edit', (req, res)=>{
         if(error){
             return res.send(error)
         }else{
-            const context = {booking: foundBooking}
+            const context = {booking: foundBooking,
+               
+                // session current user after login  
+                user: req.session.currentUser}
             res.render('./booking/edit.ejs' , context)
         }
     })
