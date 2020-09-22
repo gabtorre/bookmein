@@ -8,17 +8,17 @@
     <%- include('../partials/nav') %>
     <h1>User Show Page</h1>
     <article>
-        <h3><%=user.name %></h3>
+        <h3><%=foundUser.name %></h3>
         <div>
-            <%= user.address %>
+            <%= foundUser.address %>
             <p>
-                <strong>Email : </strong><%= user.email %>
-                <strong>Phone Number : </strong><%= user.phoneNumber %>
+                <strong>Email : </strong><%= foundUser.email %>
+                <strong>Phone Number : </strong><%= foundUser.phoneNumber %>
             </p>
         </div>
         
-        <a href="/user/<%=user._id%>/edit"  >Edit</a>
-        <form style="display: inline-block;" action="/user/<%=user._id%>?_method=DELETE" method="POST">
+        <a href="/user/<%=foundUser._id%>/edit"  >Edit</a>
+        <form style="display: inline-block;" action="/user/<%=foundUser._id%>?_method=DELETE" method="POST">
             <input type="submit"  value="DELETE">
             </form>
 

@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
         } else {
             res.render('user/index.ejs', {
                 user: req.session.currentUser,// session current user after login 
-                user: foundUsers
+                foundUsers: foundUsers
             })
         }
     })
@@ -50,7 +50,7 @@ router.get('/:id', (req, res) => {
         } else {
             res.render('user/show.ejs', {
                 user: req.session.currentUser,// session current user after login 
-                user: foundUser
+                foundUser: foundUser
             })
         }
     })
@@ -66,7 +66,7 @@ router.get('/:id/edit', (req, res) => {
         } else {
             res.render('user/edit.ejs', {
                 user: req.session.currentUser,// session current user after login 
-                user: foundUser
+                foundUser: foundUser
             })
         }
     })

@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const db = require("../models");
 const bcrypt = require("bcryptjs");
-const session = require('express-session')
 
 
 // Register Form
@@ -32,7 +31,7 @@ router.post("/register", async (req, res)=>{
 
     // creates user with req.body and hashed password
         await db.User.create(req.body);
-
+        
         //redirects to login
         res.redirect("/login");
     } catch (error) {

@@ -26,16 +26,9 @@ router.get('/', (req, res)=>{
 
 
 // New Route
-<<<<<<< HEAD
-router.get('/new', (req, res) => {
-    res.render('./company/new.ejs')
-})
-=======
 router.get('/new', (req, res)=>{
     res.render('./company/new.ejs', {user: req.session.currentUser})
- 
   })
->>>>>>> submaster
 
 
 
@@ -72,20 +65,6 @@ router.get('/:id', async (req, res) => {
         res.send({ message: "Internal server error" });
     }
 });
-
-// router.get('/:id', async (req, res) => {
-//     db.Company.findById(req.params.id)
-//     .populate('bookings')
-//     .exec( (error, foundCompany) => {
-//         if(error){
-//             return res.send(error)
-//         }
-//         res.render('./company/show.ejs', {
-//             company: foundCompany
-//         })
-//         console.log(foundCompany)
-//     })
-// });
 
 
 
