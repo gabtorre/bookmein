@@ -30,8 +30,8 @@
             <p>
                 <select name="user">
                   <option default>Select a User</option>
-                  <% user.forEach(user => { %>
-                  <option value="<%= user._id %>"><%= user.name %></option>
+                  <% foundUser.forEach(user => { %>
+                  <option value="<%=foundUser._id %>"><%=foundUser.name %></option>
                   <% }) %>
                 </select>
             </p>
@@ -45,11 +45,15 @@
         
 
         <div>
+            <% if(user) {%>
+          
+                <a href="/booking/<%=booking._id%>/edit"  >Edit</a>
+               <form style="display: inline-block;" action="/booking/<%=booking._id%>?_method=DELETE" method="POST">
+                   <input type="submit"  value="DELETE All">
+                </form>
 
-            <a href="/booking/<%=booking._id%>/edit"  >Edit</a>
-            <form style="display: inline-block;" action="/booking/<%=booking._id%>?_method=DELETE" method="POST">
-                <input type="submit"  value="DELETE All">
-             </form>
+             <% } %>
+              
         
         </div>
        
