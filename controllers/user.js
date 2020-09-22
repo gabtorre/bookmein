@@ -2,6 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../models');
+const session = require('express-session')
 
 
 
@@ -12,7 +13,8 @@ router.get('/', (req, res) => {
             console.log(error)
         } else {
             res.render('user/index.ejs', {
-                user: foundUsers,
+                user: req.session.currentUser,// session current user after login 
+                user: foundUsers
             })
         }
     })
@@ -22,7 +24,7 @@ router.get('/', (req, res) => {
 
 // New Route
 router.get('/new', (req, res) => {
-    res.render('user/new.ejs')
+    res.render('user/new.ejs', {user: req.session.currentUser})
 });
 
 
@@ -47,7 +49,8 @@ router.get('/:id', (req, res) => {
             console.log(error)
         } else {
             res.render('user/show.ejs', {
-                user: foundUser,
+                user: req.session.currentUser,// session current user after login 
+                user: foundUser
             })
         }
     })
@@ -62,7 +65,8 @@ router.get('/:id/edit', (req, res) => {
             console.log(error)
         } else {
             res.render('user/edit.ejs', {
-                user: foundUser,
+                user: req.session.currentUser,// session current user after login 
+                user: foundUser
             })
         }
     })
