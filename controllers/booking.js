@@ -93,15 +93,12 @@ router.post('/' , async (req, res)=>{
 
 
 // Show Route
-router.get('/:id', async (req, res) => {
+router.get('/:id', authRequired, async (req, res) => {
     try {
-        const foundUser = await db.User.find({});
         const foundBooking = await db.Booking.findById(req.params.id);
-       
         res.render('./booking/show.ejs', {
             booking: foundBooking,
             user: req.session.currentUser, // session current user after login 
-            foundUser: foundUser
         })
         
     } catch (error) {
@@ -156,13 +153,11 @@ router.put('/:id/join' , async (req, res)=>{
 
     const userId = req.body.user;
 
-    bookingToJoin.user = userId;
+    bookingToJoin.user = req.session.currentUser.id;
 
     await bookingToJoin.save();
 
     res.redirect('/booking');
-
-
         
     } catch (error) {
         console.log(error);
