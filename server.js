@@ -53,7 +53,22 @@ app.use(session({
 
 // View Route
 app.get('/', (req, res) => {
-    res.render('home.ejs', {user: req.session.currentUser})
+  db.Company.find({}, (error , foundCompanies)=>{
+    if(error){
+        return res.send(error)
+    }else{
+      const context = {companies: foundCompanies ,
+          // session current user after login 
+          user: req.session.currentUser}
+       
+      // res.render('./company/index.ejs', context)
+      res.render('home.ejs', context)
+     
+    }
+} )  
+
+
+
 });
 
 
