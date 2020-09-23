@@ -13,6 +13,7 @@ router.get("/register", (req, res)=>{
 //Register Post
 router.post("/register", async (req, res)=>{
     try {
+       
         // checks if user already exists 
         const foundUser = await db.User.findOne({ email: req.body.email });
         
@@ -33,7 +34,7 @@ router.post("/register", async (req, res)=>{
         await db.User.create(req.body);
         
         //redirects to login
-        res.redirect("/login");
+        res.redirect(`/login`);
     } catch (error) {
         res.send({ message: "Internal Server Error", err: error });
     }
@@ -52,6 +53,7 @@ router.get("/login", (req, res)=>{
 router.post("/login", async (req, res)=> {
    
     try {
+       
          // checks if user already exists 
         const foundUser = await db.User.findOne({ email: req.body.email });
         //if user does exist, send back an error
@@ -71,7 +73,9 @@ router.post("/login", async (req, res)=> {
             username: foundUser.username,
             id: foundUser._id,
         }
-    res.redirect("/")
+  
+
+    res.redirect(`/booking`)
     } catch (error) {
         res.send({ message: "Internal Server Error", err: error });
     }

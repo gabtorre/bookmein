@@ -7,19 +7,42 @@
 <body>
     <%- include('../partials/nav') %>
     
-    <div class="container">
-    
-    <h1>Booking Index Page</h1>
+    <div class="container text-center pt-5 ">
+
     
     <section>
-          <h3>Avaiable Bookings</h3>
-        <ul>
-            <% bookings.forEach((booking) =>{ %> 
-                <li><a href="/booking/<%= booking._id%>"><%= booking.day %></a> </li>
-                <li><strong><%= booking.time %></strong></li>
+          
+          <% const monthYear = new Date() %> 
+          <button type="button" class="btn btn-outline-success p-4 ">
+              <h2><%= fullMonths[monthYear.getMonth()] %> <%= monthYear.getFullYear()%> </h2>
+        </button>
+          
+            <div class="card border-primary mb-3 " style="max-width: 100%; ">
+            <div class="card-header"><h3>Available Bookings</h3></div>
+            <div>
 
-             <%  }) %> 
-        </ul>
+             <% bookings.forEach((booking) =>{ %>
+                 <%   const day = new Date(booking.day)  %> 
+ 
+
+                 <button type="button" class="btn btn-outline-info">
+                     <a href="/booking/<%= booking._id%>"><%= months[day.getMonth()] %>  <%= day.getDate()%></a><br>
+                     <a href="/booking/<%= booking._id%>"><%= days[day.getDay()] %> - <%= booking.time %></a><br>
+ 
+                </button>
+                   
+     
+                 <%  }) %> 
+ 
+            </div>
+
+
+
+        
+            </div>
+          </div>
+            
+      
       
     </section>
 </div>
