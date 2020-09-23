@@ -45,18 +45,14 @@ router.post('/' , (req, res)=>{
 
 
 
-//Show Route
 router.get('/:id', async (req, res) => {
-
     try {
-        //const foundCompany = await db.Company.findById(req.params.id).populate('bookings')
-        const foundCompany = await db.Company.findOne({ _id: req.params.id})
-        .populate('bookings').exec()
-        
-        //console.log(`found company : ${foundCompany}`)
+        const foundCompany = await db.Company.findById(req.params.id);
+        const foundBookings = await db.Booking.find({ 'company': req.params.id }).populate('user').exec();
 
         res.render('./company/show.ejs', {
             company: foundCompany,
+            bookings: foundBookings,
             user: req.session.currentUser // session current user after login 
         })
         
