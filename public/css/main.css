@@ -76,4 +76,9 @@ footer {
     background:rgba(0,0,0,0.6);
   }
 
-
+.carousel-inner {
+    height: 750px;
+    background: url(/images/hero.jpeg) no-repeat;
+    background-size: 100%;
+    background-position-y: 40%;
+}

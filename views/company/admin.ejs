@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/head') %>
+    <title>company details</title>
+  </head>
+  <body>
+    <%- include('../partials/nav') %>
+    <div class="container">
+      <h1>Company Show Page</h1>
+
+      <article>
+        <h3><%=company.name %></h3>
+        <div>
+          <%= company.address %>
+          <p>
+            <strong>Email : </strong><%= company.email %>
+            <strong>Phone Number : </strong><%= company.phoneNumber %>
+          </p>
+        </div>
+
+        <a href="/company/<%=company._id%>/edit">Edit</a>
+        <form
+          style="display: inline-block"
+          action="/company/<%=company._id%>?_method=DELETE"
+          method="POST"
+        >
+          <input type="submit" value="DELETE All" />
+        </form>
+      </article>
+
+      <h1>
+        <% bookings.forEach(element => { %> <% if ( element.user) { %>
+        <p><%= element.time %></p>
+        <p><%= element.day %></p>
+        <p><%= element.message %></p>
+        <p><%= element.user.name %></p>
+        <p><%= element.user.phoneNumber %></p>
+        <hr>
+        <% } %> <% }); %>
+      </h1>
+
+      <hr />
+    </div>
+  </body>
+</html>
