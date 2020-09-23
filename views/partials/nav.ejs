@@ -3,7 +3,7 @@
   <div class="container">
     <ul class="navbar-nav">
    
-     <li class="nav-item"> Welcome !   <%= user.username %> </li>
+     <li class="nav-item"> Welcome <%= user.username %>! </li>
    
     </ul>
     <span class="navbar-text d-flex align-items-center">
@@ -20,10 +20,10 @@
       </ul>
       <ul class="list-inline">
         <li class="list-inline-item">
-          <a class="text-white navbar-text" href="../login">Login</a>
+          <a class="navbar-text" href="../login">Login</a>
         </li>
         <li class="list-inline-item">
-          <a class="text-white" href="../register">Sign Up</a>
+          <a class="navbar-text" href="../register">Sign Up</a>
         </li>
       </ul>
     </div>
@@ -71,7 +71,7 @@
 
         <% } else { %>
         <li class="nav-item">
-          <a class="nav-link" href="../booking">Bookings Index</a>
+          <a class="nav-link text-white" href="../booking">Bookings Index</a>
         </li>
         <% } %>
       </ul>
