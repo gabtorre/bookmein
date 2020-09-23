@@ -21,31 +21,42 @@ const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Satur
 const fullMonths = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
 
-
+// // Index Route
+// router.get('/', (req, res)=>{
+    
+//     db.Booking.find({}, (error , foundbookings)=>{
+//         if(error){
+//             return res.send(error)
+//         }else{
+//           const context = {bookings: foundbookings,
+//             // session current user after login 
+//              user: req.session.currentUser,
+//              days: days,
+//              months: months,
+//              fullMonths: fullMonths}
+           
+//           res.render('./booking/index.ejs', context)
+//         }
+//     } )  
+//   })
 
 
 // Index Route
-router.get('/', (req, res)=>{
-    
-    db.Booking.find({}, (error , foundbookings)=>{
-        if(error){
-            return res.send(error)
-        }else{
-          const context = {bookings: foundbookings,
-           
-            // session current user after login 
-             user: req.session.currentUser,
-             
-             days: days,
-             months: months,
-             fullMonths: fullMonths}
-           
-          res.render('./booking/index.ejs', context)
-     
-         
-  
+router.get('/', async (req, res) => {
+    try {
+        const foundBookings = await db.Booking.find({}).populate('company').exec();
+        const context = {
+            bookings: foundBookings,
+            user: req.session.currentUser,
+            days: days,
+            months: months,
+            fullMonths: fullMonths
         }
-    } )  
+        res.render('./booking/index.ejs', context);
+    } catch (error) {
+        console.log(error);
+        res.send({ message: "Internal server error" });
+    }
   })
 
 

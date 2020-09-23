@@ -4,6 +4,9 @@ const router = express.Router();
 const db  = require('../models');
 const session = require('express-session')
 
+const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
+const fullMonths = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
 
 
 // Index Route
@@ -44,13 +47,36 @@ router.post('/' , (req, res)=>{
 })
 
 
-
+// Show Route
 router.get('/:id', async (req, res) => {
+    try {
+        const foundCompany = await db.Company.findById(req.params.id);
+        const foundBookings = await db.Booking.find({'company': req.params.id})
+
+        res.render('./company/show.ejs', {
+            company: foundCompany,
+            bookings: foundBookings,
+            user: req.session.currentUser, // session current user after login 
+            days: days,
+            months: months,
+            fullMonths: fullMonths
+        })
+        
+    } catch (error) {
+        console.log(error);
+        res.send({ message: "Internal server error" });
+    }
+});
+
+
+
+// Admin Route
+router.get('/:id/admin', async (req, res) => {
     try {
         const foundCompany = await db.Company.findById(req.params.id);
         const foundBookings = await db.Booking.find({ 'company': req.params.id }).populate('user').exec();
 
-        res.render('./company/show.ejs', {
+        res.render('./company/admin.ejs', {
             company: foundCompany,
             bookings: foundBookings,
             user: req.session.currentUser // session current user after login 
