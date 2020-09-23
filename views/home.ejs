@@ -23,13 +23,18 @@
       <div class="container mt-5">
       <div class="card-deck">
 
-        <% companies.forEach(company =>{ %>
+        <% companies.forEach((company, index) =>{ %>
+          <%  if(index > 2){ %>
+             <% return  %>  
+          <% } %>
           <div class="card">
             <img class="card-img-top" src="<%= company.image %>" alt="Card image cap" >
             <div class="card-body">
               <h5 class="card-title"><%= company.name %> </h5>
               <p class="card-text"><%= company.address %></p>
+              <button type="button" class="btn btn-outline-primary pr-4 pl-4"><a href="./company/<%=company._id %>">Book</a></button>
             </div>
+
           </div>
         <% }) %>
 
