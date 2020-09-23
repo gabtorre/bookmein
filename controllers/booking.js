@@ -16,8 +16,10 @@ const authRequired = function(req, res , next){
 
 
 
-// An array of Days
+// An array of Days ,  fullMonths , months
 const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
+const fullMonths = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
 
 
 
@@ -32,7 +34,11 @@ router.get('/', (req, res)=>{
           const context = {bookings: foundbookings,
            
             // session current user after login 
-            user: req.session.currentUser}
+             user: req.session.currentUser,
+             
+             days: days,
+             months: months,
+             fullMonths: fullMonths}
            
           res.render('./booking/index.ejs', context)
      
