@@ -6,27 +6,122 @@
 </head>
 <body>
     <%- include('../partials/nav') %>
-    <h1>User Show Page</h1>
-    <article>
-        <h3><%=foundUser.name %></h3>
-        <div>
-            <%= foundUser.address %>
-            <p>
-                <strong>Email : </strong><%= foundUser.email %>
-                <strong>Phone Number : </strong><%= foundUser.phoneNumber %>
-                <strong>My Bookings</strong>
-                <% bookings.forEach((booking) =>{ %>
-                    <%= booking.day %>
-                    <%= booking.time %>
-                <% }) %>
-            </p>
-        </div>
-        
-        <a href="/user/<%=foundUser._id%>/edit"  >Edit</a>
-        <form style="display: inline-block;" action="/user/<%=foundUser._id%>?_method=DELETE" method="POST">
-            <input type="submit"  value="DELETE">
-            </form>
+   
 
-     </article>
+              <div class='container' style="max-width:60%;">
+
+                <h1 class="home-secondary text-center" style="color:black;" >My Account</h1>
+
+
+                <div class="card">
+                  <div class="card-body">
+                      <h5 class="card-title">  <strong>Name: </strong><h3><%=foundUser.name %></h3></h5>
+                      <p class="card-text"> <strong>Address: </strong><%= foundUser.address %></p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                     <li class="list-group-item"> <strong>Email: </strong> <%= foundUser.email %></li>
+                      <li class="list-group-item"> <strong>Phone Number: </strong> <%= foundUser.phoneNumber %></li>
+    
+                       
+                    </ul>
+                    <div class="card-body  text-center">
+                        <button type="button" class="btn bg-warning pr-3 pl-3 pb-2 "> 
+                        
+                            <a href="/user/<%=foundUser._id%>/edit" class="card-link"> Edit </a> 
+                            
+                        </button>
+                     
+                   
+                        <form style="display: inline-block;" action="/user/<%=foundUser._id%>?_method=DELETE" method="POST">
+                          
+                           <input type="submit"  class='red-bg p-2' style="border: none; border-radius: 5px;" value="DELETE"> 
+                        </form>
+                     
+                    </div>
+                  </div>
+
+  <!-- second section -->
+
+  <h1 class="home-secondary text-center" style="color:black;" >My Bookings</h1>
+
+       <%=  %> 
+
+
+                <div class="card">
+                    <% bookings.forEach((booking) =>{ %>
+                  <div class="card-body">
+                    <%= booking.company %> 
+                  </div>
+                    <ul class="list-group list-group-flush">
+                  <li class="list-group-item">
+                            <strong>Day And Time: </strong>
+    
+                            <%= booking.day %>
+                            <%= booking.time %>
+    
+                        </li>
+
+
+
+                    <% }) %>
+                       
+                    </ul>
+                    <div class="card-body  text-center">
+                        <button type="button" class="btn bg-warning pr-3 pl-3 pb-2"> 
+                        
+                            <a href="/user/<%=foundUser._id%>/edit" class="card-link"> Edit </a> 
+                            
+                        </button>
+                     
+                   
+                        <form style="display: inline-block;" action="/user/<%=foundUser._id%>?_method=DELETE" method="POST">
+                          
+                           <input type="submit"  class='red-bg p-2' style="border: none; border-radius: 5px;" value="DELETE"> 
+                        </form>
+                     
+                    </div>
+                  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              </div>
+
+
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>

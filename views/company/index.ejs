@@ -9,16 +9,16 @@
 
 
     <div class="container text-center mt-5">
-        <h1 class='dark-link'>BARBERSHOPS</h1>
-    <div class="card-deck">
+      <h1 class="home-secondary purple-bg">BARBERSHOPS</h1>
+     <div class="card-deck">
         <div class="row">
         
                 <% companies.forEach((company) =>{ %> 
                 <div class="card" style="width: 18rem;">
                     
                     <img src="<%= company.image %>" class="card-img-top" alt="...">
-                   <h4 class="card-title"><%= company.name %></h4>
                     <div class="card-body">
+                      <h4 class="card-title"><%= company.name %></h4>
                       <p class="card-text"><%= company.address %></p>
                       <a class="btn pr-4 pl-4 red-bg " href="/company/<%=company._id %>">Book Now</a>
                     </div>

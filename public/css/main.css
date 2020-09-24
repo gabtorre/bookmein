@@ -181,6 +181,11 @@ header {
     font-weight: 500;
 }
 
+.purple-bg{
+    background-color: #c97b7b;
+    border-radius: 5px;
+}
+
 
 .h-120 {
     height: 125%;
