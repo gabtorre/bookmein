@@ -18,21 +18,18 @@ const authRequired = function(req, res , next){
 
 
 // Index Route
-router.get('/', (req, res)=>{
-    
-  db.Company.find({}, (error , foundCompanies)=>{
-      if(error){
-          return res.send(error)
-      }else{
-        const context = {companies: foundCompanies ,
-            // session current user after login 
-            user: req.session.currentUser}
-         
-        res.render('./company/index.ejs', context)
-       
-      }
-  } )  
-})
+router.get('/', async (req, res) => {
+    try {
+        const foundCompanies = await db.Company.find({});
+        const context = {
+            companies: foundCompanies,
+        };
+        res.render('./company/index.ejs', context);
+    } catch (error) {
+        console.log(error);
+        res.send({ message: "Internal server error" });
+    }
+  });
 
 
 
@@ -95,6 +92,7 @@ router.post("/login", async (req, res)=> {
         req.session.currentUser = {
             username: foundUser.username,
             id: foundUser._id,
+            role: foundUser.role
         }
         
         res.redirect(`/company/${foundUser._id}/admin`)
@@ -114,8 +112,7 @@ router.get('/:id', async (req, res) => {
 
         res.render('./company/show.ejs', {
             company: foundCompany,
-            bookings: foundBookings,
-            user: req.session.currentUser, // session current user after login 
+            bookings: foundBookings,  
             days: days,
             months: months,
             fullMonths: fullMonths
@@ -137,8 +134,7 @@ router.get('/:id/admin', async (req, res) => {
 
         res.render('./company/admin.ejs', {
             company: foundCompany,
-            bookings: foundBookings,
-            user: req.session.currentUser // session current user after login 
+            bookings: foundBookings, 
         })
         
     } catch (error) {

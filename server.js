@@ -41,35 +41,51 @@ app.use(session({
 
 
 // validates if user logs in 
-  const authRequired = function(req, res , next){
-    console.log(req.session.currentUser.id)
-     if(!req.session.currentUser){
-      return res.redirect('/login')
+const authRequired = function(req, res , next){
+//console.log(req.session.currentUser.id)
+  if(!req.session.currentUser){
+  return res.redirect('/login')
+}
+next();
+};
+
+// middleware to add user to all ejs views
+app.use(function (req, res, next) {
+res.locals.user = req.session.currentUser; // adds the user to all ejs views
+res.locals.isAdmin = false;
+next();
+});
+
+const checkRole = async (req, res, next) => {
+  try {
+    if (req.session.currentUser){
+    
+    if (req.session.currentUser.role == 'admin') {
+      res.locals.isAdmin = true;
+      } 
     }
-    next();
-    };
+  next();
+    
+  } catch (error) {
+      console.log(error);
+      res.send({ message: "Internal server error" });
+  }
+};
 
 // ROUTES
 
 // View Route
-app.get('/', (req, res) => {
-  db.Company.find({}, (error , foundCompanies)=>{
-    if(error){
-        return res.send(error)
-    }else{
-      const context = {companies: foundCompanies ,
-          // session current user after login 
-          user: req.session.currentUser}
-          
-          
-      // res.render('./company/index.ejs', context)
-      res.render('home.ejs', context)
-      
-    }
-} )  
-
-
-
+app.get('/', checkRole, async (req, res) => {
+  try {
+    const foundCompanies = await db.Company.find({});
+    const context = {
+      companies: foundCompanies,
+    };
+    res.render('home.ejs', context);
+  } catch (error) {
+    console.log(error);
+    res.send({ message: "Internal server error" });
+  }
 });
 
 
@@ -78,13 +94,13 @@ app.use('/', controllers.auth)
 
 
 // Company Route
-app.use('/company', controllers.company);
+app.use('/company', checkRole, controllers.company);
 
 // User Route
 app.use('/user', controllers.user);
 
 // Booking Route
-app.use('/booking', controllers.booking);
+app.use('/booking', checkRole, controllers.booking);
 
 
 // Server Listener
