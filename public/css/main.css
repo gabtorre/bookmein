@@ -1,5 +1,6 @@
 body {
     background-color: #f5f7fe;
+    font-family: 'Roboto Slab', serif;
 }
 
 .bg-light {
@@ -84,6 +85,7 @@ footer {
     border-radius: 20px;
 }
 
+<<<<<<< HEAD
 header {
     position: relative;
     background-color: black;
@@ -124,3 +126,38 @@ header {
     z-index: 1;
   }
   
+=======
+.carousel-inner {
+    height: 750px;
+    background: url(/images/hero.jpeg) no-repeat;
+    background-size: 100%;
+    background-position-y: 40%;
+}
+
+
+i {
+color: #4b4bc9;
+font-size: 2em;
+margin-left: 12px;
+}
+
+i:hover{
+  color: #0000ff;
+}
+
+li{
+    list-style: none;
+}
+
+
+input{
+    text-align: center;
+}
+
+
+button{
+
+    text-align: center;
+
+}
+>>>>>>> submaster
