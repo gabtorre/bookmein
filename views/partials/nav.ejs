@@ -1,5 +1,5 @@
 <% if (user) { %>
-<nav class="navbar">
+<nav class="navbar light-dark-bg">
   <div class="container">
     <ul class="navbar-nav">
    
@@ -13,27 +13,27 @@
   </div>
 </nav>
 <% } else { %>
-  <nav class="navbar login-nav">
+  <nav class="navbar login-nav light-dark-bg">
     <div class="container">
       <ul class="list-inline">
         <li class="list-inline-item"></li>
       </ul>
       <ul class="list-inline">
         <li class="list-inline-item">
-          <span class="navbar-text mr-3">For Businesses</span>
+          <span class="navbar-text mr-3 off-white light-weight mid-size-font">For Businesses</span>
         </li>
         <li class="list-inline-item">
-          <a class="navbar-text" href="../company/login">Login</a>
+          <a class="navbar-text dark-link mid-size-font" href="../company/login">Login</a>
         </li>
         <li class="list-inline-item">
-          <a class="navbar-text" href="../company/new">Sign Up</a>
+          <a class="navbar-text dark-link mid-size-font" href="../company/new">Sign Up</a>
         </li>
       </ul>
     </div>
   </nav>
 <% } %>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark navbar-transparent">
   <div class="container">
     <a class="navbar-brand" href="#">BookMeIn</a>
     <button
@@ -50,27 +50,27 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="nav justify-content-center">
         <li class="nav-item">
-          <a class="nav-link text-white" href="/">Home</a>
+          <a class="nav-link" href="/">Home</a>
         </li>
 
         <% if(user) {%>
 
         <li class="nav-item">
-          <a class="nav-link text-white" href="/company">Barbershops</a>
+          <a class="nav-link" href="/company">Barbershops</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white" href="/user/<%= user.id %>/account">My Account</a>
+          <a class="nav-link" href="/user/<%= user.id %>/account">My Account</a>
         </li>
 
         <% } else { %>
         <li class="nav-item">
-          <a class="nav-link text-white" href="../company">Barbershops</a>
+          <a class="nav-link" href="../company">Barbershops</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white" href="../login">Login</a>
+          <a class="nav-link" href="../login">Login</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white" href="../register">Sign Up</a>
+          <a class="nav-link" href="../register">Sign Up</a>
         </li>
 
         <% } %>

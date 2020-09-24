@@ -4,7 +4,7 @@
     <%- include('partials/head') %>
     <title>Book Me In</title>
 </head>
-<body class="text-center">
+<body>
 
     <%- include('partials/nav') %>
 
@@ -13,17 +13,18 @@
       <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
         <source src="/images/vid.mp4" type="video/mp4">
       </video>
-      <div class="container h-100">
-        <div class="d-flex h-100 text-center align-items-center">
+      <div class="container h-100 align-right">
+        <div class="d-flex h-120 align-items-center justify-content-end">
           <div class="w-100 text-white">
-            <h1>We could all use a haircut right now</h1>
-            <h3>Book your appointment today.</h3>
-            <p><a class="btn btn-lg btn-primary mt-3" href="/company" role="button">BOOK ONLINE </a></p>
+            <h1 class="home-secondary">We could all use a <br> haircut right now</h1>
+            <h4 class="mt-3 light-weight">Book your appointment today.</h4>
+            <p><a class="btn btn-lg mt-4 red-bg" href="/company" role="button light-weight">Book Online </a></p>
           </div>
         </div>
       </div>
     </header>
       
+    <div class="w-100 p-3 dark-bg" >
       <div class="container mt-5">
       <div class="card-deck">
 
@@ -45,6 +46,8 @@
         </div>
       </div>
       </div>
+    </div>
+
 
       <%- include('partials/footer') %>
   </body>
