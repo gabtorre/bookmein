@@ -11,11 +11,12 @@ const db = require('./models')
 
 // Instanced Modules
 const app = express();
+require('dotenv')
 
 //add role to company in company Schema
 
 // Configuration
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 
 // Middleware
 app.use(express.urlencoded({ extended: true }));
@@ -30,9 +31,9 @@ app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/'));
 app.use(session({
     resave: false,
     saveUninitialized:false,
-    secret: "gabrielllbinayyy",
+    secret: process.env.SECRET,
     store: new MongoStore({
-      url: 'mongodb://localhost:27017/bookme-sessions'
+      url: process.env.MONGODB_URI
     }),
     cookie:{
     maxAge:1000 * 60 * 60 * 24 * 7 * 2
