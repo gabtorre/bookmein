@@ -2,15 +2,23 @@
 const express = require('express');
 const router = express.Router();
 const db  = require('../models');
+const bcrypt = require("bcryptjs");
 const session = require('express-session')
 
 const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
 const fullMonths = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
 
+const authRequired = function(req, res , next){
+    if(!req.session.currentUser){
+     return res.redirect('/login')
+   }
+   next();
+   };
+
 
 // Index Route
-router.get('/', (req, res)=>{
+router.get('/', authRequired, (req, res)=>{
     
   db.Company.find({}, (error , foundCompanies)=>{
       if(error){
@@ -36,15 +44,66 @@ router.get('/new', (req, res)=>{
 
 
 // Post Route
-router.post('/' , (req, res)=>{
-    db.Company.create(req.body, (error, companyCreated)=>{
-        if(error){
-            return res.send(error)
-        }else{
-            res.redirect('/company')
+router.post('/' , async (req, res) => {
+    try {
+        const foundUser = await db.User.findOne({ email: req.body.email });
+        if(foundUser) {
+            return res.send({ message: "Account is already registered" });
         }
-    })
+        const salt = await bcrypt.genSalt(10);
+        const hash = await bcrypt.hash(req.body.password, salt);
+        req.body.password = hash;
+
+        const formData = {
+            ...req.body,
+            role: "admin"
+        }
+
+        await db.Company.create(formData)
+        res.redirect('/company/login')
+    } catch (error) {
+        console.log(error);
+        res.send({ message: "Internal server error" });
+    }
 })
+
+
+// Login Form
+router.get("/login", (req, res)=>{
+    res.render("company/login.ejs", {user: req.session.currentUser});
+});
+
+// Login Post 
+router.post("/login", async (req, res)=> {
+    try {
+         // checks if user already exists 
+        const foundUser = await db.Company.findOne({ email: req.body.email });
+       
+        //if user does exist, send back an error
+        if(!foundUser) {
+            return res.send({ message: "Email or Password incorrect" });
+        }
+
+        // return true or false if db password and entered password matched or not
+        const match = await bcrypt.compare(req.body.password, foundUser.password);
+        // no password matched , sends error
+        if(!match) {
+            return res.send({ message: "Email or Password incorrect" });
+        }
+        
+        // if password match, create sesssion for authentication
+        req.session.currentUser = {
+            username: foundUser.username,
+            id: foundUser._id,
+        }
+        
+        res.redirect(`/company/${foundUser._id}/admin`)
+       // }
+    } catch (error) {
+        res.send({ message: "Internal Server Error", err: error });
+    }
+})
+
 
 
 // Show Route

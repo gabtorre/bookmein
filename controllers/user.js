@@ -57,6 +57,26 @@ router.get('/:id', (req, res) => {
 });
 
 
+// User account Route
+router.get('/:id/account', async (req, res) => {
+    try {
+        const foundUser = await db.User.findById(req.params.id);
+        //const foundBookings = await db.User.findById(req.params.id).populate('bookings');
+        const foundBookings = await db.Booking.find({ 'user': req.params.id }).populate('user').exec();
+        //console.log(foundBookings)
+        res.render('user/show.ejs', {
+            user: req.session.currentUser, 
+            foundUser: foundUser,
+            bookings: foundBookings,
+        })
+        
+    } catch (error) {
+        console.log(error);
+        res.send({ message: "Internal server error" });
+    }
+});
+
+
 
 // Edit Route
 router.get('/:id/edit', (req, res) => {
