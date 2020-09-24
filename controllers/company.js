@@ -18,7 +18,7 @@ const authRequired = function(req, res , next){
 
 
 // Index Route
-router.get('/', authRequired, (req, res)=>{
+router.get('/', (req, res)=>{
     
   db.Company.find({}, (error , foundCompanies)=>{
       if(error){
