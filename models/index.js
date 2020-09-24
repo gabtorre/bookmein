@@ -1,7 +1,8 @@
 // MODELS AND DATABASE CONNECTION
 
 const mongoose = require('mongoose');
-const connectionString = 'mongodb://localhost:27017/main-db';
+require('dotenv').config();
+const connectionString = process.env.MONGODB_URI || 'mongodb://localhost:27017/main-db';
 
 
 mongoose.connect(connectionString,
