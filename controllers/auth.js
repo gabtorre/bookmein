@@ -75,6 +75,7 @@ router.post("/login", async (req, res)=> {
         req.session.currentUser = {
             username: foundUser.username,
             id: foundUser._id,
+            role: foundUser.role,
         }
         
         res.redirect(`/company`)

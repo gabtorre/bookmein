@@ -36,6 +36,8 @@ body {
 
 .nav-link:hover {
     color: #2E828B;
+    transform: scale(1.03);
+    transition: transform 100ms ease-in-out;
 }
 
 .carousel-item > img {
@@ -190,4 +192,8 @@ h1 {
 
 .align-right {
     text-align: right;
+}
+
+.dark-blue {
+    background-color: #134153;
 }
