@@ -98,3 +98,15 @@ i:hover{
 li{
     list-style: none;
 }
+
+
+input{
+    text-align: center;
+}
+
+
+button{
+
+    text-align: center;
+
+}
