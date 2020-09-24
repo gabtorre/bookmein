@@ -82,3 +82,14 @@ footer {
     background-size: 100%;
     background-position-y: 40%;
 }
+
+
+i {
+color: #4b4bc9;
+font-size: 2em;
+margin-left: 12px;
+}
+
+i:hover{
+  color: #0000ff;
+}

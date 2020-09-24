@@ -6,53 +6,146 @@
   </head>
   <body>
     <%- include('../partials/nav') %>
-    <div class="container">
-      <h1>Company Show Page</h1>
 
-      <article>
-        <h3><%=company.name %></h3>
-        <div>
-          <%= company.address %>
+    <div class="container text-center mt-5">
+
+      <!-- --------------- picture------------------- -->
+      <div class="row">
+        <div class="col-8">
+  
+          <img class="card-img-top" src="<%= company.image %>" alt="Card image cap" style="max-width: 30em;" >
           <p>
-            <strong>Email : </strong><%= company.email %>
-            <strong>Phone Number : </strong><%= company.phoneNumber %>
-          </p>
-        </div>
-      </article>
+            <h3><%=company.name %></h3>
+                <p>
+                  <%= company.address %>
+                  <strong>Email : </strong><%= company.email %>
+                </p>
+                <strong><i class="fas fa-phone-square-alt"></i> <%= company.phoneNumber %> </strong>
 
-      <hr />
-    </div>
-    <section>
-          
-      <% const monthYear = new Date() %> 
-      <button type="button" class="btn btn-outline-success p-4 ">
-          <h2><%= fullMonths[monthYear.getMonth()] %> <%= monthYear.getFullYear()%> </h2>
-    </button>
+               
+              </p>
       
-        <div class="card border-primary mb-3 " style="max-width: 100%; ">
-        <div class="card-header"><h3>Available Bookings</h3></div>
-        <div>
+         
+          <hr />
 
 
-         <% bookings.forEach((booking) =>{ %>
-             <%   const day = new Date(booking.day)  %> 
 
-
-             <button type="button" class="btn btn-outline-info">
-                 <a href="/booking/<%= booking._id%>">
-                    <%= months[day.getMonth()] %>
-                    <%= day.getDate()%></a>
-                <br>
-                 <a href="/booking/<%= booking._id%>"><%= days[day.getDay()] %> - <%= booking.time %><br><%= booking.company.name %></a><br>
+      <!-- ---------------booking slots-------------- -->
+              
+            <% const monthYear = new Date() %> 
+            <button type="button" class="btn btn-outline-success btn-lg btn-block"> 
+                    <h2><%= fullMonths[monthYear.getMonth()] %> <%= monthYear.getFullYear()%> </h2>
 
             </button>
-               
- 
-             <%  }) %> 
+           
+            
+          <div class="card border-success mb-3 " style="max-width: 100%; ">
+          <div class="card-header"><h3>Available Bookings</h3></div>
+          <div>
+  
+  
+  
+           <% bookings.forEach((booking) =>{ %>
+               <%   const day = new Date(booking.day)  %> 
+  
+  
+               <button type="button" class="btn btn-outline-primary">
+                   <a href="/booking/<%= booking._id%>">
+                      <%= months[day.getMonth()] %>
+                      <%= day.getDate()%></a>
+                  <br>
+                   <a href="/booking/<%= booking._id%>"><%= days[day.getDay()] %> - <%= booking.time %><br><%= booking.company.name %></a><br>
+  
+              </button>
+                 
+   
+               <%  }) %> 
+  
+         
+                </div>
+              </div>
 
+        
         </div>
+    
+    
+
+
+      <!-- --------------- maps ------------------- -->
+
+        <div class="col-4">
+
+        
+             <div class="mb-5">
+
+            
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3450.4397032565844!2d-95.44876648454725!3d30.1388424210613!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864737370dfde8f9%3A0x9700a0135da88eaa!2sLegacy%20Barbers%20Of%20The%20Woodlands!5e0!3m2!1sen!2sus!4v1600901243718!5m2!1sen!2sus" 
+                 width="400" height="600" frameborder="0" style="border:1px solid grey; ;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+     
+              
+             </div>
+
+      
+      <!-- --------------- Business Hours------------------- -->
+
+      
+      <button type="button" class="btn btn-primary btn-lg btn-block"> <h4>Business Hours</h4></button>
+      <table class="table table-sm">
+        <thead>
+               <tr>
+                 <th scope="col"></th>
+                
+                 <th scope='col'>Monday</th>
+                 <th scope='col'>Tuesday</th>
+                 <th scope='col'>Wednesday</th>
+                 <th scope='col'>Thursday</th>
+                 <th scope='col'>Friday</th>
+                
+               </tr>
+             </thead>
+             <tbody>
+               <tr>
+                 <th scope="row"></th>
+             
+                 <td>10:00 AM - 6:00 PM</td>
+                 <td>10:00 AM - 6:00 PM</td>
+                 <td>10:00 AM - 6:00 PM</td>
+                 <td>10:00 AM - 6:00 PM</td>
+                 <td>10:00 AM - 6:00 PM</td>
+                 
+                
+               </tr>
+             
+             </tbody>
+           </table>
+
+
+              <h4>Follow Us</h4>
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <i class="fab fa-facebook-square"></i>
+                <i class="fab fa-instagram-square"></i>
+                <i class="fab fa-linkedin"></i>
+                
+              </div>
+
+
+        
+        
+
+          </div>
         </div>
-      </div>
-</section>
+    </div>
+
+
+    </div>
+  
+
+
+
+
+  
+ 
+
+   
   </body>
 </html>
