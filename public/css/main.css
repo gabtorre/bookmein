@@ -171,6 +171,17 @@ header {
     background-color:#c44646;
 }
 
+
+
+
+.redmaroon-bg {
+    background-color: #902E2E;
+    color: #FCFAF1;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 500;
+}
+
+
 .h-120 {
     height: 125%;
 }
@@ -191,3 +202,17 @@ h1 {
 .align-right {
     text-align: right;
 }
+
+
+i{
+color: #4a6af0; 
+font-size: 2em;
+border-radius: 5px;
+padding: 10px; 
+    
+}
+
+i:hover{
+    color: #0000ff
+}
+

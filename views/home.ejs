@@ -25,7 +25,7 @@
     </header>
       
     <div class="w-100 p-3 dark-bg" >
-      <div class="container mt-5">
+      <div class="container mt-5 text-center">
       <div class="card-deck">
 
         <% companies.forEach((company, index) =>{ %>
@@ -35,9 +35,11 @@
           <div class="card">
             <img class="card-img-top" src="<%= company.image %>" alt="Card image cap" >
             <div class="card-body">
-              <h5 class="card-title"><%= company.name %> </h5>
+              <h4 class="card-title light-weight"><%= company.name %> </h4>
               <p class="card-text"><%= company.address %></p>
-              <button type="button" class="btn btn-outline-primary pr-4 pl-4"><a href="./company/<%=company._id %>">Book</a></button>
+             
+            <a class="btn pr-4 pl-4 red-bg " href="./company/<%=company._id %>">Book</a>
+             
             </div>
 
           </div>

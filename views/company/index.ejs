@@ -9,7 +9,7 @@
 
 
     <div class="container text-center mt-5">
-        <button type="button" class="btn btn-lg btn-block text-primary"><h1>Companies</h1></button>
+        <h1 class='dark-link'>BARBERSHOPS</h1>
     <div class="card-deck">
         <div class="row">
         
@@ -20,7 +20,7 @@
                    <h4 class="card-title"><%= company.name %></h4>
                     <div class="card-body">
                       <p class="card-text"><%= company.address %></p>
-                      <a href="/company/<%= company._id%>" class="btn btn-primary">Book Now</a>
+                      <a class="btn pr-4 pl-4 red-bg " href="/company/<%=company._id %>">Book Now</a>
                     </div>
                   </div>
             
