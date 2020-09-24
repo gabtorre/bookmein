@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head') %>
+    <title>New User</title>
+</head>
+<body>
+    <%- include('../partials/nav') %>
+    <h1>Add New User Page</h1>
+    <form action="/user" method="POST">
+        Name : <input type="text" name="name"><br>
+        Email : <input type="email" name="email"><br>
+        Phone Number: <input type="text" name="phoneNumber"><br>
+        <input type="submit" value="SUBMIT">
+    </form>
+</body>
+</html>

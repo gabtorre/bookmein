@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head') %>
+    <title>Bookings</title>
+</head>
+<body>
+    <%- include('../partials/nav') %>
+    
+    <div class="container text-center pt-5 ">
+
+    
+    <section>
+          
+          <% const monthYear = new Date() %> 
+          <button type="button" class="btn btn-outline-success p-4 ">
+              <h2><%= fullMonths[monthYear.getMonth()] %> <%= monthYear.getFullYear()%> </h2>
+        </button>
+          
+            <div class="card border-primary mb-3 " style="max-width: 100%; ">
+            <div class="card-header"><h3>Available Bookings</h3></div>
+            <div>
+
+
+             <% bookings.forEach((booking) =>{ %>
+                 <%   const day = new Date(booking.day)  %> 
+ 
+
+                 <button type="button" class="btn btn-outline-info">
+                     <a href="/booking/<%= booking._id%>">
+                        <%= months[day.getMonth()] %>
+                        <%= day.getDate()%></a>
+                    <br>
+                     <a href="/booking/<%= booking._id%>"><%= days[day.getDay()] %> - <%= booking.time %><br><%= booking.company.name %></a><br>
+ 
+                </button>
+                   
+     
+                 <%  }) %> 
+ 
+            </div>
+
+
+
+        
+            </div>
+          </div>
+            
+      
+      
+    </section>
+</div>
+</body>
+</html>

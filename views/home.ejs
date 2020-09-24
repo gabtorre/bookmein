@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head') %>
+    <title>Book Me In</title>
+</head>
+<body>
+  <%- include('partials/home-nav') %>
+    <header>
+      <div class="overlay"></div>
+      <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+        <source src="/images/vid.mp4" type="video/mp4">
+      </video>
+      <div class="container h-100 align-right">
+        <div class="d-flex h-120 align-items-center justify-content-end">
+          <div class="w-100 text-white">
+            <h1 class="home-secondary">We could all use a <br> haircut right now</h1>
+            <h4 class="mt-3 light-weight">Book your appointment today.</h4>
+            <p><a class="btn btn-lg mt-4 red-bg" href="/company" role="button light-weight">Book Online </a></p>
+          </div>
+        </div>
+      </div>
+    </header>
+      
+    <div class="w-100 p-3 dark-bg" >
+      <div class="container mt-5 text-center">
+      <div class="card-deck">
+
+        <% companies.forEach((company, index) =>{ %>
+          <%  if(index > 2){ %>
+             <% return  %>  
+          <% } %>
+          <div class="card">
+            <img class="card-img-top" src="<%= company.image %>" alt="Card image cap" >
+            <div class="card-body">
+              <h4 class="card-title light-weight"><%= company.name %> </h4>
+              <p class="card-text"><%= company.address %></p>
+             
+            <a class="btn pr-4 pl-4 red-bg " href="./company/<%=company._id %>">Book</a>
+             
+            </div>
+
+          </div>
+        <% }) %>
+
+        </div>
+      </div>
+      </div>
+    </div>
+
+
+      <%- include('partials/footer') %>
+  </body>
+</html>

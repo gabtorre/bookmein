@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head') %>
+    <title>Users</title>
+</head>
+<body>
+    <%- include('../partials/nav') %>
+    <h1>User Index Page</h1>
+    <ul>
+        <% foundUsers.forEach((oneUser) =>{ %> 
+            <li><a href="/user/<%= oneUser._id%>"><%= oneUser.name %></a></li>
+
+         <%  }) %> 
+    </ul>
+</body>
+</html>

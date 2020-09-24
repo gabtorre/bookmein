@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head') %>
+    <title>Company edit page</title>
+</head>
+<body>
+    <%- include('../partials/nav') %>
+    
+
+        <h1>Company Edit Page</h1>
+
+    <section>
+    <form action="/company/<%=company._id%>?_method=PUT" method="POST">
+       
+        Name : <input type="text" name="name" value="<%=company.name %>"><br>
+        Address : <input type="text" name="address" value="<%=company.address %>"><br>
+        Phone Number: <input type="text" name="phoneNumber" value="<%=company.phoneNumber%>"><br>
+        Email : <input type="email" name="email"  value="<%=company.email %>"><br>
+        <input type="submit" value="SUBMIT CHANGES">
+      
+
+    </form>
+    </section>
+
+</body>
+</html>
