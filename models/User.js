@@ -9,6 +9,7 @@ const userSchema = new mongoose.Schema(
     email: {type: String, required:[true, "You must provide an email."] },
     password: {type: String, required: true},
     phoneNumber: {type: Number, required:[true, "You must provide a phone number."] },
+    role: String,
     // array of bookings
     bookings: [ { type: mongoose.Schema.Types.ObjectId, ref: "Booking" } ]
  },

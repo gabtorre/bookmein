@@ -14,6 +14,11 @@
             <p>
                 <strong>Email : </strong><%= foundUser.email %>
                 <strong>Phone Number : </strong><%= foundUser.phoneNumber %>
+                <strong>My Bookings</strong>
+                <% bookings.forEach((booking) =>{ %>
+                    <%= booking.day %>
+                    <%= booking.time %>
+                <% }) %>
             </p>
         </div>
         

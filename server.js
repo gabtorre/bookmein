@@ -60,10 +60,11 @@ app.get('/', (req, res) => {
       const context = {companies: foundCompanies ,
           // session current user after login 
           user: req.session.currentUser}
-       
+          
+          
       // res.render('./company/index.ejs', context)
       res.render('home.ejs', context)
-     
+      
     }
 } )  
 
@@ -77,7 +78,7 @@ app.use('/', controllers.auth)
 
 
 // Company Route
-app.use('/company', authRequired, controllers.company);
+app.use('/company', controllers.company);
 
 // User Route
 app.use('/user', controllers.user);

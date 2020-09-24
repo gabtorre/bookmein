@@ -30,8 +30,14 @@ router.post("/register", async (req, res)=>{
         
         req.body.password = hash;
 
+        //add user role
+        const formData = {
+            ...req.body,
+            role: "user"
+        }
+        
     // creates user with req.body and hashed password
-        await db.User.create(req.body);
+        await db.User.create(formData);
         
         //redirects to login
         res.redirect(`/login`);
@@ -47,15 +53,12 @@ router.get("/login", (req, res)=>{
     res.render("auth/login.ejs", {user: req.session.currentUser});
 });
 
-
-
 // Login Post 
 router.post("/login", async (req, res)=> {
-   
     try {
-       
          // checks if user already exists 
         const foundUser = await db.User.findOne({ email: req.body.email });
+       
         //if user does exist, send back an error
         if(!foundUser) {
             return res.send({ message: "Email or Password incorrect" });
@@ -73,13 +76,14 @@ router.post("/login", async (req, res)=> {
             username: foundUser.username,
             id: foundUser._id,
         }
-  
-
-    res.redirect(`/booking`)
+        
+        res.redirect(`/company`)
+       // }
     } catch (error) {
         res.send({ message: "Internal Server Error", err: error });
     }
 })
+
 
 
 // Logout Route

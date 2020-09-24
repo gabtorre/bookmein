@@ -156,7 +156,7 @@ router.put('/:id/join' , async (req, res)=>{
 
     await bookingToJoin.save();
 
-    res.redirect('/booking');
+    res.redirect("/");
         
     } catch (error) {
         console.log(error);

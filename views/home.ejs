@@ -7,18 +7,22 @@
 <body class="text-center">
 
     <%- include('partials/nav') %>
-    <div class="carousel-inner" role="listbox">
-      <div class="item active">
-        
-        <div class="container">
-          <div class="carousel-caption">
-            <h1>Online Booking Application</h1>
-            <p>Book your appointment today.</p>
-            <p><a class="btn btn-lg btn-primary" href="/register" role="button">BOOK ONLINE </a></p>
+
+    <header>
+      <div class="overlay"></div>
+      <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+        <source src="/images/vid.mp4" type="video/mp4">
+      </video>
+      <div class="container h-100">
+        <div class="d-flex h-100 text-center align-items-center">
+          <div class="w-100 text-white">
+            <h1>We could all use a haircut right now</h1>
+            <h3>Book your appointment today.</h3>
+            <p><a class="btn btn-lg btn-primary mt-3" href="/company" role="button">BOOK ONLINE </a></p>
           </div>
         </div>
       </div>
-    </div>
+    </header>
       
       <div class="container mt-5">
       <div class="card-deck">

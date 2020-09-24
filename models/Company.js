@@ -8,8 +8,9 @@ const companySchema = new mongoose.Schema(
     address: {type: String, required:[true, "You must provide a address."] },
     phoneNumber: {type: Number, required:[true, "You must provide a phone number."] },
     email: {type: String, required:[true, "You must provide a email."] },
+    password: {type: String, required: true},
     image: {type: String, required:[true, "You must provide a email."] },
-    
+    role: String,
     bookings: [ { type: mongoose.Schema.Types.ObjectId, ref: "Booking" } ]
  },
   {
