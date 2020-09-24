@@ -1,6 +1,7 @@
 body {
     background-color: #f5f7fe;
-    font-family: 'Roboto Slab', serif;
+    /* font-family: 'Silka-Bold', sans-serif; */
+    font-family: 'Rubik', sans-serif;
 }
 
 .bg-light {
@@ -12,17 +13,11 @@ body {
 }
 
 .navbar {
-    font-family: 'Arimo', sans-serif;
     letter-spacing: 1px;
     font-weight: 700;
-    font-size: .75rem;
+    font-size: .9rem;
     line-height: 1.5;
     text-transform: uppercase;
-}
-
-
-.navbar a {
-    color: #121213;
 }
 
 .navbar-brand {
@@ -33,7 +28,14 @@ body {
     padding: 2rem 0;
     position: relative;
     padding-left: 0 1.25rem;
-    padding-right: 1.25rem;
+    padding-right: 2.25rem;
+    color: #FCFAF1;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.nav-link:hover {
+    color: #2E828B;
 }
 
 .carousel-item > img {
@@ -64,7 +66,7 @@ footer {
 }
 
 .login-nav a {
-    padding-right: 1.25rem;
+    padding-right: 2.4rem;
 }
 
 .center-div {
@@ -85,11 +87,10 @@ footer {
     border-radius: 20px;
 }
 
-<<<<<<< HEAD
 header {
     position: relative;
     background-color: black;
-    height: 75vh;
+    height: 90vh;
     min-height: 25rem;
     width: 100%;
     overflow: hidden;
@@ -122,42 +123,71 @@ header {
     height: 100%;
     width: 100%;
     background-color: black;
-    opacity: 0.5;
+    opacity: 0.7;
     z-index: 1;
   }
   
-=======
-.carousel-inner {
-    height: 750px;
-    background: url(/images/hero.jpeg) no-repeat;
-    background-size: 100%;
-    background-position-y: 40%;
+.dark-bg {
+    background-color: #222429;
 }
 
-
-i {
-color: #4b4bc9;
-font-size: 2em;
-margin-left: 12px;
+.light-dark-bg {
+    background-color: #2d2f34
 }
 
-i:hover{
-  color: #0000ff;
+.navbar-transparent{
+    position:absolute;
+    width:100%;
+    z-index:10;
+    max-width:100%;
 }
 
-li{
-    list-style: none;
+.light-weight {
+    font-weight: 400;
 }
 
-
-input{
-    text-align: center;
+.dark-link {
+    color: #2E828B;
+    font-weight: 400;
 }
 
-
-button{
-
-    text-align: center;
-
+.mid-size-font {
+    font-size: .75rem;
 }
->>>>>>> submaster
+
+.dark-link:hover {
+    color: #8AD8ED;
+    text-decoration: none;
+}
+
+.red-bg {
+    background-color: #902E2E;
+    color: #FCFAF1;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 500;
+}
+
+.red-bg:hover {
+    background-color:#c44646;
+}
+
+.h-120 {
+    height: 125%;
+}
+
+.home-secondary {
+    font-family: 'Yeseva One', cursive;
+    color: #FCFAF1;
+}
+
+.off-white {
+    color: #FCFAF1;
+}
+
+h1 {
+    font-size: 3em;
+}
+
+.align-right {
+    text-align: right;
+}
