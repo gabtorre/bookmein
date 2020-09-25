@@ -9,12 +9,15 @@ const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Satur
 const fullMonths = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
 
+
+
 const authRequired = function(req, res , next){
     if(!req.session.currentUser){
      return res.redirect('/login')
    }
    next();
    };
+
 
 
 // Index Route
@@ -65,10 +68,13 @@ router.post('/' , async (req, res) => {
 })
 
 
+
 // Login Form
 router.get("/login", (req, res)=>{
     res.render("company/login.ejs", {user: req.session.currentUser});
 });
+
+
 
 // Login Post 
 router.post("/login", async (req, res)=> {
@@ -143,8 +149,9 @@ router.get('/:id/admin', async (req, res) => {
     }
 });
 
-// New Booking Route
 
+
+// New Booking Route
 router.get('/:id/admin/new', async (req, res) => {
     const company = await db.Company.findById(req.params.id)
     try {
@@ -159,22 +166,12 @@ router.get('/:id/admin/new', async (req, res) => {
   });
 
 
+
 // New Booking Post Route
 router.post('/:id/admin' , async (req, res)=>{
     try {
-    // takes a date and asigns it 
-    //let day = new Date(req.body.day)
-    // asigns a day to req.body.day from days array
-    //req.body.day = days[day.getDay()]
-
     const createdADay = await db.Booking.create(req.body);
     const foundCompany = await db.Company.findById(req.params.id);
-    //const foundUser = await db.User.findById(req.body.user)
-
-    //createdADay.user  = foundUser;
-
-    //foundUser.bookings.push(createdADay);
-    //await foundUser.save();
 
     foundCompany.bookings.push(createdADay);
     await foundCompany.save();
@@ -187,8 +184,6 @@ router.post('/:id/admin' , async (req, res)=>{
 });
 
   
-
-
 
 // Edit Route
 router.get('/:id/edit', (req, res)=>{

@@ -1,6 +1,5 @@
 body {
     background-color: #f5f7fe;
-    /* font-family: 'Silka-Bold', sans-serif; */
     font-family: 'Rubik', sans-serif;
 }
 
@@ -238,4 +237,18 @@ a {
 
 .fa-flag:hover {
     color: #2E828B;;
+}
+
+.btn-outline-primary {
+    color: #134153;
+    border-color: #2E828B;
+    margin: 5px;
+}
+
+.btn:hover {
+    background-color: #2E828B;
+    color: white;
+}
+.btn:hover a{
+    color: white;
 }
