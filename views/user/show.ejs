@@ -6,17 +6,16 @@
 </head>
 <body>
     <%- include('../partials/nav') %>
-   
 
-              <div class='container' style="max-width:60%;">
+                    <!--  MY Account -->
+         <div class='container' style="max-width:60%;">
 
                 <h1 class="home-secondary text-center" style="color:black;" >My Account</h1>
-
-
+                
                 <div class="card">
                   <div class="card-body">
                       <h5 class="card-title">  <strong>Name: </strong><h3><%=foundUser.name %></h3></h5>
-                      <p class="card-text"> <strong>Address: </strong><%= foundUser.address %></p>
+
                     </div>
                     <ul class="list-group list-group-flush">
                      <li class="list-group-item"> <strong>Email: </strong> <%= foundUser.email %></li>
@@ -24,6 +23,7 @@
     
                        
                     </ul>
+
                     <div class="card-body  text-center">
                         <button type="button" class="btn bg-warning pr-3 pl-3 pb-2 "> 
                         
@@ -39,87 +39,36 @@
                      
                     </div>
                   </div>
-
-  <!-- second section -->
-
-  <h1 class="home-secondary text-center" style="color:black;" >My Bookings</h1>
-
-       <%=  %> 
+                  
 
 
-                <div class="card">
+                      <!--  MY Bookings -->
+
+                    <h1 class="home-secondary text-center" style="color:black;" >My Bookings</h1>
+
+                    <div class="card text-center">
                     <% bookings.forEach((booking) =>{ %>
-                  <div class="card-body">
-                    <%= booking.company %> 
-                  </div>
+               
                     <ul class="list-group list-group-flush">
-                  <li class="list-group-item">
-                            <strong>Day And Time: </strong>
-    
-                            <%= booking.day %>
-                            <%= booking.time %>
-    
+                        <li class="list-group-item">
+                            <h3> <%= booking.day %> <br> <%= booking.time %> </h3>
+                            <h5><%= booking.company.name %></h5>
+                            
+                            <p><%= booking.company.address %> <br> 
+                              <strong>Email: </strong><%= booking.company.email %> <br>
+                             <strong><i class="fas fa-phone-square-alt"></i> <%= booking.company.phoneNumber %> </strong>
+                            
+                            </p>
+                          
                         </li>
-
-
 
                     <% }) %>
                        
                     </ul>
-                    <div class="card-body  text-center">
-                        <button type="button" class="btn bg-warning pr-3 pl-3 pb-2"> 
-                        
-                            <a href="/user/<%=foundUser._id%>/edit" class="card-link"> Edit </a> 
-                            
-                        </button>
-                     
                    
-                        <form style="display: inline-block;" action="/user/<%=foundUser._id%>?_method=DELETE" method="POST">
-                          
-                           <input type="submit"  class='red-bg p-2' style="border: none; border-radius: 5px;" value="DELETE"> 
-                        </form>
-                     
-                    </div>
                   </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
               </div>
-
-
-
-          
-
-
-
-
-
-
-
-
-
-
-
 
 
 

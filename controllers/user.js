@@ -61,15 +61,14 @@ router.get('/:id', (req, res) => {
 router.get('/:id/account', async (req, res) => {
     try {
         const foundUser = await db.User.findById(req.params.id);
-        //const foundBookings = await db.User.findById(req.params.id).populate('bookings');
-        const foundBookings = await db.Booking.find({ 'user': req.params.id }).populate('user').exec();
-        const foundCompany = await db.Booking.find({ 'company': req.params.id }).populate('company').exec();
-        //console.log(foundBookings)
+      
+        const foundBookings = await db.Booking.find({ 'user': req.params.id }).populate('company').exec();
+        
         res.render('user/show.ejs', {
             user: req.session.currentUser, 
             foundUser: foundUser,
             bookings: foundBookings,
-            foundCompany: foundCompany
+            
         })
         
     } catch (error) {
