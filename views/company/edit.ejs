@@ -6,22 +6,37 @@
 </head>
 <body>
     <%- include('../partials/nav') %>
-    
+    <div class="container w-50">
+        <h2 class="text-center mt-4">Edit Account</h2>
 
-        <h1>Company Edit Page</h1>
+        <form action="/company/<%=company._id%>?_method=PUT" method="POST" class="mt-4 white-bg">
 
-    <section>
-    <form action="/company/<%=company._id%>?_method=PUT" method="POST">
-       
-        Name : <input type="text" name="name" value="<%=company.name %>"><br>
-        Address : <input type="text" name="address" value="<%=company.address %>"><br>
-        Phone Number: <input type="text" name="phoneNumber" value="<%=company.phoneNumber%>"><br>
-        Email : <input type="email" name="email"  value="<%=company.email %>"><br>
-        <input type="submit" value="SUBMIT CHANGES">
-      
+             
+                  <div class="form-group">
+                  <label for="name">Name</label>
+                  <input class="form-control" type="text" name="name" value="<%=company.name %>">
+                  </div>
 
-    </form>
-    </section>
+  
+                  <div class="form-group">
+                      <label for="address">Address</label>
+                      <input class="form-control" type="text" name="address" value="<%=company.address %>">
+                  </div>
+                
+                  <div class="form-group">
+                      <label for="phoneNumber">Phone Number</label>
+                      <input class="form-control" type="text" name="phoneNumber" value="<%=company.phoneNumber%>">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="email">Email</label>
+                    <input class="form-control" type="email" name="email"  value="<%=company.email %>">
+                </div>
+                  
+                <input type="submit" value="Submit Changes" class="btn btn-secondary btn-lg btn-block red-bg" />
+              </form>
+        </div>
+        <%- include('../partials/footer') %>
 
 </body>
 </html>

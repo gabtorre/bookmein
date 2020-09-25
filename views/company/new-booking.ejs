@@ -8,8 +8,8 @@
     <%- include('../partials/nav') %>
 
     <div class="container w-50">
-        <h1 class='text-center'>Booking New Page</h1>
-            <form action="/company/<%= company._id %>/admin" method="POST">
+      <h2 class="text-center mt-4">Add Booking</h2>
+            <form action="/company/<%= company._id %>/admin" method="POST" class="mt-4 white-bg">
                 <div class="form-group">
                 <label for="company">Company</label>
                 <select class="form-control" name="company">
@@ -40,8 +40,8 @@
                     <label for="message">Message</label>
                     <textarea class="form-control" name="message" rows="3"></textarea>
                 </div>
-
-              <input type="submit" value="SUBMIT" />
+                
+              <input type="submit" value="SUBMIT" class="btn btn-secondary btn-lg btn-block red-bg" />
             </form>
       </div>
       <%- include('../partials/footer') %>

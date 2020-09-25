@@ -79,6 +79,7 @@ const checkRole = async (req, res, next) => {
 app.get('/', checkRole, async (req, res) => {
   try {
     const foundCompanies = await db.Company.find({});
+    
     const context = {
       companies: foundCompanies,
     };

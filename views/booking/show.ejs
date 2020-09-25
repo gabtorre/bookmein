@@ -2,61 +2,38 @@
 <html lang="en">
 <head>
     <%- include('../partials/head') %>
-    <title>Booking details</title>
+    <title>Booking Details</title>
 </head>
 <body>
     <%- include('../partials/nav') %>
-        <% if (user) { %>
-         <h1>Hello User</h1>
-        <% } %>   
+    <div class="container w-50 center-div mt-3"> 
 
-        <h1>Booking Show Page</h1>
-
-
-
-    <article>
+        <h3>Booking Details</h3>
         
-         <div>
-            <p>
-                <h4><%=booking.day %></h4>
-              <strong> <%= booking.time %></strong>
-                       
-            </p>
-               <p> <%= booking.message %></p>
-   
-         </div>
+        <div class="mt-4 white-bg text-center">
 
+            <h4><%=booking.day %></h4>
+            <strong> <%= booking.time %></strong>
+            <p> <%= booking.message %></p>
 
-
-      
-        <form action="/booking/<%= booking._id %>/join?_method=PUT" method="POST">
+            <form action="/booking/<%= booking._id %>/join?_method=PUT" method="POST">
             
-            <input type="submit" value="Book This">
-        </form>
-   
+                <input type="submit" value="Book This" class="btn btn-secondary btn-lg btn-block red-bg">
+            </form>
 
-
-
-
-
-        <% if (user) { %>
-            <div>
-
-                <a href="/booking/<%=booking._id%>/edit"  >Edit</a>
-                <form style="display: inline-block;" action="/booking/<%=booking._id%>?_method=DELETE" method="POST">
-                    <input type="submit"  value="DELETE All">
-                 </form>
-            
-            </div>
-        <% } %>
-
-        
-       
-
-     </article>
-
-  
-
-
+            <% if (isAdmin) { %>
+                <div>
+    
+                    <a href="/booking/<%=booking._id%>/edit"  >Edit</a>
+                    <form style="display: inline-block;" action="/booking/<%=booking._id%>?_method=DELETE" method="POST">
+                        <input type="submit"  value="DELETE All">
+                     </form>
+                
+                </div>
+            <% } %>
+    
+        </div>
+        </div> 
+        <%- include('../partials/footer') %>
 </body>
 </html>
