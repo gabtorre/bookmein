@@ -147,7 +147,6 @@ req.body.day = days[day.getDay()]
 // Put Route to update Booking
 router.put('/:id/join' , async (req, res)=>{
     try {
-
     const bookingToJoin = await db.Booking.findById(req.params.id)
 
     const userId = req.body.user;
@@ -156,7 +155,7 @@ router.put('/:id/join' , async (req, res)=>{
 
     await bookingToJoin.save();
 
-    res.redirect("/");
+    res.redirect(`/user/${req.session.currentUser.id}/account`);
         
     } catch (error) {
         console.log(error);
