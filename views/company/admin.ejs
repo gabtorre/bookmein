@@ -6,41 +6,39 @@
   </head>
   <body>
     <%- include('../partials/nav') %>
-    <div class="container">
-      <h1>Company Show Page</h1>
-
-      <article>
-        <h3><%=company.name %></h3>
-        <div>
-          <%= company.address %>
-          <p>
-            <strong>Email : </strong><%= company.email %>
-            <strong>Phone Number : </strong><%= company.phoneNumber %>
-          </p>
+    <h2 class="text-center mt-4">My Account</h2>
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col">
+          <h4 class="text-center">Account Details</h4>
+          <ul class="list-group list-group-flush mt-4 white-bg">
+            <li class="list-group-item"><%=company.name %></li>
+            <li class="list-group-item"><%= company.email %></li>
+            <li class="list-group-item"><%= company.phoneNumber %></li>
+            <li class="list-group-item"><%= company.address %></li>
+            <li class="list-group-item"><a href="/company/<%=company._id%>/edit">Edit My Account</a></li>
+            <li class="list-group-item">
+              <form action="/company/<%=company._id%>?_method=DELETE" method="POST" >
+              <input type="submit" value="Delete My Account" class="btn btn-lg btn-block red-bg" />
+            </form></li>
+          </ul>
         </div>
-
-        <a href="/company/<%=company._id%>/edit">Edit</a>
-        <form
-          style="display: inline-block"
-          action="/company/<%=company._id%>?_method=DELETE"
-          method="POST"
-        >
-          <input type="submit" value="DELETE All" />
-        </form>
-      </article>
-
-      <h1>
-        <% bookings.forEach(element => { %> <% if ( element.user) { %>
-        <p><%= element.time %></p>
-        <p><%= element.day %></p>
-        <p><%= element.message %></p>
-        <p><%= element.user.name %></p>
-        <p><%= element.user.phoneNumber %></p>
-        <hr>
-        <% } %> <% }); %>
-      </h1>
-
-      <hr />
+        <div class="col">
+          <h4 class="text-center">Upcoming Appointments</h4>
+          <ul class="list-group list-group-flush mt-4 white-bg">
+            
+              <% bookings.forEach(element => { %> <% if ( element.user) { %>
+              <li class="list-group-item">
+              <p><%= element.day %> - <%= element.time %></p>
+              <p><%= element.user.name %></p>
+              <p><%= element.user.phoneNumber %></p>
+              <p><%= element.message %></p>
+              </li>
+              <% } %> <% }); %></li>
+          </ul>
+        </div>
+      </div>
     </div>
+    <%- include('../partials/footer') %>
   </body>
 </html>

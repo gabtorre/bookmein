@@ -101,7 +101,7 @@ router.put('/:id', (req, res) => {
         if (error) {
             console.log(error)
         } else {
-            res.redirect(`/user/${updatedUser._id}`)
+            res.redirect(`/user/${updatedUser._id}/account`)
         }
     })
 });
@@ -114,7 +114,7 @@ router.delete('/:id', (req, res) => {
         if (error) {
             console.log(error)
         } else {
-            res.redirect('/user')
+            res.redirect('/')
         }
     })
 });

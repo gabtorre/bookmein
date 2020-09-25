@@ -6,16 +6,29 @@
 </head>
 <body>
     <%- include('../partials/nav') %>
-    <h1>User Edit Page</h1>
-    <section>
-        <form action="/user/<%=foundUser._id%>?_method=PUT" method="POST">
-           
-            Name : <input type="text" name="name" value="<%=foundUser.name %>"><br>
-            Phone Number: <input type="text" name="phoneNumber" value="<%=user.phoneNumber%>"><br>
-            Email : <input type="email" name="email"  value="<%=foundUser.email %>"><br>
-            <input type="submit" value="SUBMIT CHANGES">
-    
-        </form>
-        </section>
+    <div class="container w-50">
+        <h2 class="text-center mt-4">Edit Account</h2>
+
+        <form action="/user/<%=foundUser._id%>?_method=PUT" method="POST" class="mt-4 white-bg">
+
+                  <div class="form-group">
+                  <label for="name">Name</label>
+                  <input class="form-control" type="text" name="name" value="<%=foundUser.name %>"><br>
+                  </div>
+                
+                  <div class="form-group">
+                      <label for="phoneNumber">Phone Number</label>
+                      <input class="form-control" type="text" name="phoneNumber" value="<%=foundUser.phoneNumber%>">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="email">Email</label>
+                    <input class="form-control" type="email" name="email"  value="<%=foundUser.email %>">
+                </div>
+                  
+                <input type="submit" value="Submit Changes" class="btn btn-secondary btn-lg btn-block red-bg" />
+              </form>
+        </div>
+        <%- include('../partials/footer') %>
 </body>
 </html>
