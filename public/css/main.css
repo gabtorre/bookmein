@@ -217,7 +217,7 @@ padding: 10px;
 }
 
 i:hover{
-    color: #0000ff
+    color: #2E828B;
 }
 
 .dark-blue {
@@ -230,4 +230,12 @@ a {
 
 .fancy-font {
     font-family: 'Yeseva One', cursive;
+}
+
+.fa-blue{
+    color: #134153;
+}
+
+.fa-flag:hover {
+    color: #2E828B;;
 }
