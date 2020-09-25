@@ -1,6 +1,5 @@
 body {
     background-color: #f5f7fe;
-    /* font-family: 'Silka-Bold', sans-serif; */
     font-family: 'Rubik', sans-serif;
 }
 
@@ -217,7 +216,7 @@ padding: 10px;
 }
 
 i:hover{
-    color: #0000ff
+    color: #2E828B;
 }
 
 .dark-blue {
@@ -230,4 +229,26 @@ a {
 
 .fancy-font {
     font-family: 'Yeseva One', cursive;
+}
+
+.fa-blue{
+    color: #134153;
+}
+
+.fa-flag:hover {
+    color: #2E828B;;
+}
+
+.btn-outline-primary {
+    color: #134153;
+    border-color: #2E828B;
+    margin: 5px;
+}
+
+.btn:hover {
+    background-color: #2E828B;
+    color: white;
+}
+.btn:hover a{
+    color: white;
 }
