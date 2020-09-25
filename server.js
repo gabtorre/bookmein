@@ -55,16 +55,15 @@ res.locals.isAdmin = false;
 next();
 });
 
+
 const checkRole = async (req, res, next) => {
   try {
     if (req.session.currentUser){
-    
     if (req.session.currentUser.role == 'admin') {
       res.locals.isAdmin = true;
       } 
     }
   next();
-    
   } catch (error) {
       console.log(error);
       res.send({ message: "Internal server error" });
