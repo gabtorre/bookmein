@@ -25,8 +25,6 @@ app.use(express.static('public'));
 app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/'));
 
 
-
-
 // creates the session id on server side 
 app.use(session({
     resave: false,

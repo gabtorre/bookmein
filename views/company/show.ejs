@@ -21,16 +21,13 @@
           <p>
               <h4 class="light-weight"><%=company.name %></h4>
               <p>
-                  <%= company.address %>
-                <strong>Email : </strong><%= company.email %>
-              </p>
-              <strong><i class="fas fa-phone-square-alt"></i> <%= company.phoneNumber %> </strong>
+                  <%= company.address %></p>
+                  <p><strong>Email : </strong><%= company.email %></p>
+              
+              <strong><i class="fas fa-phone-square-alt fa-blue"></i> <%= company.phoneNumber %> </strong>
 
-             
             </p>
-
-
-                       
+   
             <% const monthYear = new Date() %>
 
             <h4 class=" p-2 redmaroon-bg light-weight"><%= fullMonths[monthYear.getMonth()] %> <%= monthYear.getFullYear()%></h4>
@@ -43,14 +40,14 @@
                <%   const day = new Date(booking.day)  %> 
   
   
-               <button type="button" class="btn btn-outline-primary">
+               <button class="btn btn-outline-primary">
                    <a href="/booking/<%= booking._id%>">
                       <%= months[day.getMonth()] %>
                       <%= day.getDate()%></a>
                   <br>
                    <a href="/booking/<%= booking._id%>"><%= days[day.getDay()] %> - <%= booking.time %><br><%= booking.company.name %></a><br>
   
-               </button>
+                   </button>
                  
    
                <%  }) %> 
@@ -106,22 +103,12 @@
 
 
 
-
-
            <h4 class='light-weight'>Follow Us</h4>
            <div class="btn-group" role="group" aria-label="Basic example">
-             <i class="fab fa-facebook-square"></i>
-             <i class="fab fa-instagram-square"></i>
-             <i class="fab fa-linkedin"></i>
-             
+             <i class="fab fa-facebook-square fa-blue "></i>
+             <i class="fab fa-instagram-square fa-blue"></i>
+             <i class="fab fa-linkedin fa-blue"></i>
            </div>
-
-
-
-
-
-
-
         </div>
      
       </div>

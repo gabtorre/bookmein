@@ -65,19 +65,9 @@ router.get('/new', authRequired, async (req, res) => {
 // Post Route
 router.post('/' , async (req, res)=>{
     try {
-    // takes a date and asigns it 
-    //let day = new Date(req.body.day)
-    // asigns a day to req.body.day from days array
-    //req.body.day = days[day.getDay()]
 
     const createdADay = await db.Booking.create(req.body);
     const foundCompany = await db.Company.findById(req.body.company);
-    //const foundUser = await db.User.findById(req.body.user)
-
-    //createdADay.user  = foundUser;
-
-    //foundUser.bookings.push(createdADay);
-    //await foundUser.save();
 
     foundCompany.bookings.push(createdADay);
     await foundCompany.save();
@@ -144,10 +134,11 @@ req.body.day = days[day.getDay()]
     })
 })
 
+
+
 // Put Route to update Booking
 router.put('/:id/join' , async (req, res)=>{
     try {
-
     const bookingToJoin = await db.Booking.findById(req.params.id)
 
     const userId = req.body.user;
@@ -156,13 +147,14 @@ router.put('/:id/join' , async (req, res)=>{
 
     await bookingToJoin.save();
 
-    res.redirect("/");
+    res.redirect(`/user/${req.session.currentUser.id}/account`);
         
     } catch (error) {
         console.log(error);
         res.send({ message: "Internal server error" });
     }
 });
+
 
 
 // Delete Route
