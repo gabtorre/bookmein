@@ -2,11 +2,10 @@
 <html lang="en">
   <head>
     <%- include('../partials/head') %>
-    <title>Add new time</title>
+    <title>Add Booking</title>
   </head>
   <body>
     <%- include('../partials/nav') %>
-
     <div class="container w-50">
       <h2 class="text-center mt-4">Add Booking</h2>
             <form action="/company/<%= company._id %>/admin" method="POST" class="mt-4 white-bg">
@@ -35,9 +34,6 @@
                 <option>3:00pm</option>
                 </select>
                 </div>
-
-              
-                
               <input type="submit" value="SUBMIT" class="btn btn-secondary btn-lg btn-block red-bg" />
             </form>
       </div>

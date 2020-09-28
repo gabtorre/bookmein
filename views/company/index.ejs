@@ -2,35 +2,27 @@
 <html lang="en">
 <head>
     <%- include('../partials/head') %>
-    <title>Companies</title>
+    <title>Barbershops</title>
 </head>
 <body>
     <%- include('../partials/nav') %>
     <h2 class="fancy-font text-center mt-4">BARBERSHOPS</h2>
-    
-    <div class="container text-center mt-5">
-    
-     <div class="card-deck">
-        <div class="row">
-        
-                <% companies.forEach((company) =>{ %> 
-                <div class="card">
-                    
-                    <img src="<%= company.image %>" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h4 class="card-title"><%= company.name %></h4>
-                      <p class="card-text"><%= company.address %></p>
-                      <a class="btn pr-4 pl-4 red-bg " href="/company/<%=company._id %>">Book Now</a>
-                    </div>
-                  </div>
-            
-                  <%  }) %> 
-         
-            </div>
-  </div>
-
-
-  </div>
+    <div class="container text-center mt-3">
+      <div class="card-deck">
+        <% companies.forEach((company) =>{ %> 
+        <div class="card">
+          <img class="card-img-top" src="<%= company.image %>">
+          <div class="card-body">
+            <h5 class="card-title"><%= company.name %></h5>
+            <p class="card-text"><%= company.address %></p>
+          </div>
+          <div class="card-footer">
+            <a class="btn pr-4 pl-4 red-bg " href="/company/<%=company._id %>">Book Now</a>
+          </div>
+        </div>
+        <% }) %> 
+      </div>
+    </div>
   <%- include('../partials/footer') %>
 </body>
 </html>

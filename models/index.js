@@ -10,7 +10,6 @@ mongoose.connect(connectionString,
     useUnifiedTopology: true,
     useFindAndModify: false,
     useCreateIndex: true,
-   
     });
 
 

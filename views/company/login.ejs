@@ -1,33 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <%- include('../partials/head') %>
     <title>Login</title>
-</head>
-<body>
+  </head>
+  <body>
     <%- include('../partials/nav') %>
-    
-    <div class="container w-50 center-div mt-3"> 
 
-    <h3>Log in to your account</h3>
-    
-    <form action="/company/login" method="POST" class="mt-4 white-bg">
+    <div class="container w-50 center-div mt-3">
+      <h3>Log in to your account</h3>
 
+      <form action="/company/login" method="POST" class="mt-4 white-bg">
         <div class="form-group">
-            <label for="email">E-mail</label>
-            <input class="form-control form-control-lg" type="email" name="email" placeholder="Email" required>
+          <label for="email">E-mail</label>
+          <input
+            class="form-control form-control-lg"
+            type="email"
+            name="email"
+            placeholder="Email"
+            required
+          />
         </div>
 
         <div class="form-group">
-            <label for="password">Password</label>
-            <input class="form-control form-control-lg" type="password" name="password" placeholder="Password" required>
+          <label for="password">Password</label>
+          <input
+            class="form-control form-control-lg"
+            type="password"
+            name="password"
+            placeholder="Password"
+            required
+          />
         </div>
-        
-        
-        <input type="submit" value="Login" class="btn btn-secondary btn-lg btn-block">
 
-    </form>
+        <input
+          type="submit"
+          value="Login"
+          class="btn btn-secondary btn-lg btn-block"
+        />
+      </form>
     </div>
     <%- include('../partials/footer') %>
-</body>
+  </body>
 </html>

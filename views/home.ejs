@@ -21,34 +21,29 @@
         </div>
       </div>
     </header>
-      
-    <div class="w-100 p-3 dark-bg" >
-      <div class="container mt-5 text-center">
-      <div class="card-deck">
 
+    <div class="w-100 p-3 dark-bg" >
+    <div class="container text-center mt-3 mb-5">
+      <div class="card-deck">
         <% companies.forEach((company, index) =>{ %>
           <%  if(index > 2){ %>
              <% return  %>  
-          <% } %>
-          <div class="card">
-            <img class="card-img-top" src="<%= company.image %>" alt="Card image cap" >
-            <div class="card-body">
-              <h4 class="card-title light-weight"><%= company.name %> </h4>
-              <p class="card-text"><%= company.address %></p>
-             
-            <a class="btn pr-4 pl-4 red-bg " href="./company/<%=company._id %>">Book</a>
-             
-            </div>
-
+          <% } %> 
+        <div class="card card-home">
+          <img class="card-img-top" src="<%= company.image %>">
+          <div class="card-body">
+            <h5 class="card-title"><%= company.name %></h5>
+            <p class="card-text"><%= company.address %></p>
           </div>
-        <% }) %>
-
+          <div class="card-footer">
+            <a class="btn pr-4 pl-4 red-bg " href="/company/<%=company._id %>">Book Now</a>
+          </div>
         </div>
-      </div>
+        <% }) %> 
       </div>
     </div>
-
-
+  </div>
+     
       <%- include('partials/footer') %>
   </body>
 </html>

@@ -1,41 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <%- include('../partials/head') %>
     <title>Edit page</title>
-</head>
-<body>
+  </head>
+  <body>
     <%- include('../partials/nav') %>
 
-        <h1>Booking Edit Page</h1>
-      
+    <h1>Booking Edit Page</h1>
 
     <section>
-        <h4>Change an appoitment</h4>
-    <form action="/booking/<%= booking._id %>?_method=PUT" method="POST">
+      <h4>Change an appoitment</h4>
+      <form action="/booking/<%= booking._id %>?_method=PUT" method="POST">
+        Day : <input type="date" name="day" value="<%= booking.day %>" /><br />
+        Time:
+        <select name="time" value="<%= booking.time %>">
+          <option default>Select a time</option>
+          <option>10:00am</option>
+          <option>11:00am</option>
+          <option>12:00pm</option>
+          <option>1:00pm</option>
+          <option>2:00pm</option>
+          <option>3:00pm</option></select
+        ><br />
 
-        Day : <input type="date" name="day" value="<%= booking.day %>"><br>
-       Time: <select name="time" value="<%= booking.time %>">
-            <option default>Select a time</option>
-             <option>10:00am</option>
-            <option >11:00am</option>
-            <option >12:00pm</option>
-            <option >1:00pm</option>
-            <option >2:00pm</option>
-            <option >3:00pm</option>
-           
-            
-        </select><br>
-
-
-        Message : <textarea name="message" value="<%= booking.message %>" cols="30" rows="3"></textarea><br>
-        <input type="submit" value="SUBMIT">
-
-    </form>
-
-
-    
+        Message :
+        <textarea
+          name="message"
+          value="<%= booking.message %>"
+          cols="30"
+          rows="3"
+        ></textarea
+        ><br />
+        <input type="submit" value="SUBMIT" />
+      </form>
     </section>
-
-</body>
+  </body>
 </html>
