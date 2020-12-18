@@ -9,51 +9,31 @@
 
     <div class="container mt-5">
       <div class="row">
+
+        <!--  Account Info -->
+
         <div class="col">
           <h4 class="text-center">Account Details</h4>
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">
-                <strong>Name: </strong>
-                <h3><%=foundUser.name %></h3>
-              </h5>
-            </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">
-                <strong>Email: </strong> <%= foundUser.email %>
-              </li>
-              <li class="list-group-item">
-                <strong>Phone Number: </strong> <%= foundUser.phoneNumber %>
-              </li>
-            </ul>
-    
-            <div class="card-body text-center">
-              <button type="button" class="btn bg-warning pr-3 pl-3 pb-2">
-                <a href="/user/<%=foundUser._id%>/edit" class="card-link"> Edit </a>
-              </button>
-    
-              <form
-                style="display: inline-block"
-                action="/user/<%=foundUser._id%>?_method=DELETE"
-                method="POST"
-              >
-                <input
-                  type="submit"
-                  class="red-bg p-2"
-                  style="border: none; border-radius: 5px"
-                  value="DELETE"
-                />
+          <ul class="list-group list-group-flush mt-4 white-bg">
+            <li class="list-group-item"><%=foundUser.name %></li>
+            <li class="list-group-item"><%= foundUser.email %></li>
+            <li class="list-group-item"><%= foundUser.phoneNumber %></li>
+            <li class="list-group-item">
+              <a href="/user/<%=foundUser._id%>/edit">Edit My Account</a>
+            </li>
+            <li class="list-group-item">
+              <form action="/user/<%=foundUser._id%>?_method=DELETE" method="POST" >
+                <input type="submit" value="Delete My Account" class="btn btn-lg btn-block red-bg" />
               </form>
-            </div>
-          </div>
+          </li>
+          </ul>
         </div>
+         <!--  My Bookings -->
+
         <div class="col">
           <h4 class="text-center">My Bookings</h4>
           <div class="container">
-      
-            <!--  MY Bookings -->
-      
-            <div class="card text-center">
+            <div class="card text-center card-account">
               <% bookings.forEach((booking) =>{ %>
       
               <ul class="list-group list-group-flush">
@@ -81,11 +61,6 @@
         </div>
       </div>
     </div>
-
-
     <%- include('../partials/footer') %>
-
-    <!--  MY Account -->
-    
   </body>
 </html>

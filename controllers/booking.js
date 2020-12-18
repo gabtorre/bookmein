@@ -23,71 +23,12 @@ const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept'
 
 
 
-// Index Route
-router.get('/', async (req, res) => {
-    try {
-        const foundBookings = await db.Booking.find({}).populate('company').exec();
-        const context = {
-            bookings: foundBookings,
-            user: req.session.currentUser,
-            days: days,
-            months: months,
-            fullMonths: fullMonths
-        }
-        res.render('./booking/index.ejs', context);
-    } catch (error) {
-        console.log(error);
-        res.send({ message: "Internal server error" });
-    }
-  })
-
-
-
-// New Route
-router.get('/new', authRequired, async (req, res) => {
-    try {
-        const fondCompany = await db.Company.find({});
-        //const foundUser = await db.User.find({});
-
-        res.render('./booking/new.ejs', {
-            company: fondCompany,
-            user: req.session.currentUser// session current user after login 
-          
-        });
-    } catch (error) {
-        console.log(error);
-        res.send({ message: "Internal server error" });
-    }
-  });
-
-
-
-// Post Route
-router.post('/' , async (req, res)=>{
-    try {
-
-    const createdADay = await db.Booking.create(req.body);
-    const foundCompany = await db.Company.findById(req.body.company);
-
-    foundCompany.bookings.push(createdADay);
-    await foundCompany.save();
-    res.redirect('/booking');
-        
-    } catch (error) {
-        console.log(error);
-        res.send({ message: "Internal server error" });
-    }
-});
-
-
-
 // Show Route
 router.get('/:id', authRequired, async (req, res) => {
     try {
         const foundBooking = await db.Booking.findById(req.params.id);
         res.render('./booking/show.ejs', {
-            booking: foundBooking,
-            user: req.session.currentUser, // session current user after login 
+            booking: foundBooking
         })
         
     } catch (error) {
@@ -98,17 +39,15 @@ router.get('/:id', authRequired, async (req, res) => {
 
 
 
-
 // Edit Route
 router.get('/:id/edit', authRequired, (req, res)=>{
     db.Booking.findById(req.params.id, (error, foundBooking)=>{
         if(error){
             return res.send(error)
         }else{
-            const context = {booking: foundBooking,
-               
-                // session current user after login  
-                user: req.session.currentUser}
+            const context = {
+                booking: foundBooking,
+                }
             res.render('./booking/edit.ejs' , context)
         }
     })
@@ -129,7 +68,7 @@ req.body.day = days[day.getDay()]
         if(error){
            return res.send(error)
         }else{
-            res.redirect('/booking')
+            res.redirect(`/booking/${req.params.id}`)
         }
     })
 })
@@ -140,15 +79,10 @@ req.body.day = days[day.getDay()]
 router.put('/:id/join' , async (req, res)=>{
     try {
     const bookingToJoin = await db.Booking.findById(req.params.id)
-
     const userId = req.body.user;
-
     bookingToJoin.user = req.session.currentUser.id;
-
     await bookingToJoin.save();
-
-    res.redirect(`/user/${req.session.currentUser.id}/account`);
-        
+    res.redirect(`/user/${req.session.currentUser.id}/account`);   
     } catch (error) {
         console.log(error);
         res.send({ message: "Internal server error" });
@@ -163,7 +97,7 @@ router.delete('/:id', authRequired, (req , res)=>{
         if(error){
             return res.send(error)
         }else{
-            res.redirect('/booking')
+            res.redirect(`/company/${req.session.currentUser.id}`)
         }
     })
 })

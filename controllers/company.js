@@ -38,7 +38,7 @@ router.get('/', async (req, res) => {
 
 // New Route
 router.get('/new', (req, res)=>{
-    res.render('./company/new.ejs', {user: req.session.currentUser})
+    res.render('./company/new.ejs')
   })
 
 
@@ -71,7 +71,7 @@ router.post('/' , async (req, res) => {
 
 // Login Form
 router.get("/login", (req, res)=>{
-    res.render("company/login.ejs", {user: req.session.currentUser});
+    res.render("company/login.ejs");
 });
 
 
@@ -156,7 +156,6 @@ router.get('/:id/admin/new', async (req, res) => {
     const company = await db.Company.findById(req.params.id)
     try {
         res.render('./company/new-booking.ejs', {
-            user: req.session.currentUser,
             company: company,
         });
     } catch (error) {
@@ -191,7 +190,7 @@ router.get('/:id/edit', (req, res)=>{
         if(error){
             return res.send(error)
         }else{
-            const context = {company: foundCompany , user: req.session.currentUser}
+            const context = {company: foundCompany}
             res.render('./company/edit.ejs' , context)
         }
     })
