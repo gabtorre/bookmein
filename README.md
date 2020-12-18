@@ -1,45 +1,61 @@
-# Project 1
-### Gabriel &amp; Binay
+# BookMeIn 📅
 
-## MVP Pitch
-Project 1 is an online booking software that allows users to book appointments with this company. The company can add their availble times and users can book a slot. 
+BookMeIn is an online booking application that allows users to book appointments with local barbershops.
 
-## User Stories
-* Company provides a service.
-* Company is available for appointments.
-* Company is able to create time slots for the week.
-* Company is able to edit the time slots.
-* Company is able to delete time slots.
-* Company is able to see their appointments.
-* User is able to see available time slots.
-* User fills in their name, email, phone, and selects time slot.
-* Time slots are displayed in a dropdown.
-* User is able to book a time slot.
-* User cannot cancel their appointment.
-* User is able to see their bookings.
+[Live Demo 🖥️ ](https://bookmein2020.herokuapp.com/)
 
-## Milestones
+Log in to explore the application:
 
-* Saturday - User MVC
-* Sunday - Company MVC
-* Monday - Booking MVC / Relationships
-* Tuesday - Relationships / Front End
-* Wednesday - Front End / MVP
-* Thursday - Debugging / Stretch Goals
-* Friday - Wrap Up / Present
+Email: demo@demo.com - Password: demo1234
 
-## Wire frames
+# Features 📋
+Barbershops can:
+- Sign up and login to their business account
+- Update and edit company information on their profile
+- Create, edit, and delete available time slots
+- Accept and view upcoming appointments
+- Lets users book appointments with different barbershops
+
+Users can:
+- Sign up and login to their account
+- Browse barbershops and see their available time slots
+- Book appointments with different barbershops
+- See their upcoming appointments on their profiles
+
+# Buit With 🔨
+
+<table>
+  <tr>
+  <td>
+  <img src="images/express.svg" width="100px">
+  </td>
+  <td>
+  <img src="images/javascript.svg" width="75px">
+  </td>
+  <td>
+  <img src="images/mongodb.svg" width="80px">
+  </td>
+    <td>
+  <img src="images/jquery.svg" width="80px">
+  </td>
+  <td>
+  <img src="images/bootstrap.svg" width="75px">
+  </td>
+  <td>
+  <img src="images/css3.svg" width="75px">
+  </td>
+  <td>
+  <img src="images/html5.svg" width="75px">
+  </td>
+</tr>
+</table>
+
+Built by <a href="https://github.com/gabtorre" target="_blank">Gabriel</a> and <a href="https://github.com/khadkabinay" target="_blank">Binay</a>
+
+# Wire frames
 ![FLowChart](public//images/flow.png)
 ![HomePage](public//images/home.png)
 ![BookPage](public//images/book.png)
 
-## ERD
+# ERD
 ![ERD](public//images/erd.png)
-
-
-##  Stretch Goals
-
-* Login page for users.
-* Add calendar to select bookings.
-* User can cancel booking and time slot will be available again.
-* User Reviews.
